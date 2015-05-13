@@ -39,6 +39,10 @@ if has('autocmd') && !exists('autocommands_loaded')
     autocmd BufWritePost .vimrc.local source %
     " save all files on focus lost, ignoring warnings about untitled buffers
    autocmd FocusLost * silent! wa
+
+    " make quickfix windows take all the lower section of the screen when there
+    " are multiple windows open
+    autocmd FileType qf wincmd J
 endif
 
 " code folding settings
@@ -47,3 +51,342 @@ set foldnestmax=10 " deepest fold is 10 levels
 set nofoldenable " don't fold by default
 set foldlevel=1
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => User Interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set so=7 " set 7 lines to the cursors - when moving vertical
+set wildmenu " enhanced command line completion
+set hidden " current buffer can be put into background
+set showcmd " show incomplete commands
+set noshowmode " don't show which mode disabled for PowerLine
+set wildmode=list:longest " complete files like a shell
+set scrolloff=3 " lines of text around cursor
+set shell=$SHELL
+set cmdheight=1 " command bar height
+
+set title " set terminal title
+
+" Searching
+set ignorecase " case insensitive searching
+set smartcase " case-sensitive if expresson contains a capital letter
+set hlsearch
+set incsearch " set incremental search, like modern browsers
+set nolazyredraw " don't redraw while executing macros
+
+set magic " Set magic on, for regex
+
+set showmatch " show matching braces
+set mat=2 " how many tenths of a second to blink
+set wildignore+=*.pyc,*.o,*.class,*/build/*,*/tmp/*,*.so,*.swp,*.zip,*/static/doc/javascripts/*,/var/*
+set wildignore+=tags,gems.tags,*/vendor/*,*.png,*.jpg,*.otf,*.woff,*.jpeg,*.ttf
+
+set encoding=utf8
+let base16colorspace=256  " Access colors present in 256 colorspace"
+set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors"
+execute "set background=".$BACKGROUND
+execute "colorscheme ".$THEME
+
+" set number " show line numbers
+set relativenumber " show relative line numbers
+set number " show the current line number"
+
+set wrap "turn on line wrapping
+set wrapmargin=8 " wrap lines when coming within n characters from side
+set linebreak " set soft wrapping
+set showbreak=… " show ellipsis at breaking
+
+set autoindent " automatically set indent of new line
+set smartindent
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups, and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
+" vim - Persistent Undo
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => StatusLine
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set laststatus=2 " show the satus line all the time
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General mappings/shortcuts for functionality
+" Additional, plugin-specific mappings are located under
+" the plugins section
+
+" disable Ex mode
+noremap Q <NOP>
+
+" edit ~/.vimrc
+map <leader>ev :e! ~/.vimrc<cr>
+" edit vim plugins
+map <leader>evp :e! ~/.vim/plugins.vim<cr>
+" edit vim functions
+map <leader>evf :e! ~/.vim/functions.vim<cr>
+" edit gitconfig
+map <leader>eg :e! ~/.gitconfig<cr>
+
+set showbreak=↪
+
+
+" moving up and down work as you would expect
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+nnoremap <silent> ^ g^
+nnoremap <silent> $ g$
+
+" helpers for dealing with other people's code
+nmap \t :set ts=4 sts=4 sw=4 noet<cr>
+nmap \s :set ts=4 sts=4 sw=4 et<cr>
+
+" alias yw to yank the entire word 'yank inner word'
+" even if the cursor is halfway inside the word
+nnoremap ,yw yiww
+" ,ow = 'overwrite word', replace a word with what's in the yank buffer
+nnoremap ,ow "_diwhp
+" Don't have to use Shift to get into command mode, just hit semicolon
+nnoremap ; :
+"Go to last edit location with ,.
+nnoremap ,. '.
+
+" ,cq to toggle quickfix window (where you have stuff like GitGrep)
+" ,oq to open it back up (rare)
+nmap <silent> ,cq :cclose<CR>
+nmap <silent> ,co :copen<CR>
+nmap <silent> [q :cprevious<CR>
+nmap <silent> ]q :cnext<CR>
+autocmd FileType python map <buffer> <C-j> ]M
+autocmd FileType python map <buffer> <C-k> [M
+
+" copy current filename into system clipboard - mnemonic: (c)urrent(f)ilename
+" this is helpful to paste someone the path you're looking at
+nnoremap <silent> ,cf :let @* = expand("%:p")<CR>
+" Create window splits easier. The default
+" way is Ctrl-w,v and Ctrl-w,s. I remap
+" this to vv and ss
+nnoremap <silent> vv <C-w>v
+nnoremap <silent> ss <C-w>s
+
+"close buffer but not window
+map <silent> <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
+
+
+" vim - search
+map <silent> <leader>h *:set hlsearch<CR>
+nmap <silent> // :nohlsearch<CR>
+
+
+" flake 8
+let g:flake8_max_line_length=120
+
+
+" fix indent
+nmap <silent> <leader>= gg=G<C-o><C-o>
+
+" alias ag to yank the entire word 'yank inner word' and search for it using
+" Ag - the silver searcher 
+" even if the cursor is halfway inside the word
+nnoremap ,ag "zyiw:exe "Ag ".@z.""<CR>
+
+"set more easy way to move between panes
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" gundo
+map <leader>g :GundoToggle<CR>
+
+" NERDTree
+map <silent> <leader>nn :NERDTreeToggle<CR>
+map <silent> <leader>nt :NERDTreeFind<CR>
+let NERDTreeIgnore=['\.pyc$', '\.o$', '\.class$']
+let NERDTreeMinimalUI=1
+
+" CtrlP
+let g:ctrlp_by_filename = 1
+let g:ctrlp_working_path_mode='a'
+let g:ctrlp_map='<leader>t'
+nnoremap <silent> ,b :CtrlPBuffer<CR>
+nnoremap <silent> ,m :CtrlPMRUFiles<CR>
+" nnoremap <silent> ,T :CtrlPBufTag<CR>
+nnoremap <silent> ,L :CtrlPLine<CR>
+" nnoremap <silent> ,F :CtrlPCurFile<CR>
+" map <silent> <leader>[ :CtrlPTag<CR>
+let g:ctrlp_match_window = 'top,order:ttb'
+let g:ctrlp_custom_ignore = {
+				\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+				\ 'file': '\v\.(exe|so|dll|pyc|o|swp)$',
+				\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+				\ }
+
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" TagBar
+let g:tagbar_autoclose = 1
+map <silent> <leader>] :TagbarToggle<CR>
+
+let g:tagbar_type_css = {
+\ 'ctagstype' : 'Css',
+    \ 'kinds'     : [
+        \ 'c:classes',
+        \ 's:selectors',
+        \ 'i:identities'
+    \ ]
+\ }
+
+let g:tagbar_type_scss = {
+\ 'ctagstype' : 'Scss',
+    \ 'kinds' : [
+        \ 'c:classes',
+        \ 's:selectors',
+        \ 'i:identities'
+    \ ]
+\ }
+
+let g:tagbar_type_ruby = {
+    \ 'kinds' : [
+        \ 'm:modules',
+        \ 'c:classes',
+        \ 'd:describes',
+        \ 'C:contexts',
+        \ 'f:methods',
+        \ 'F:singleton methods'
+    \ ]
+\ }
+
+
+
+" " Fugitive Shortcuts
+nmap <silent> <leader>gs :Gstatus<cr>
+" nmap <leader>ge :Gedit<cr>
+" nmap <silent><leader>gr :Gread<cr>
+nmap <silent><leader>gb :Gblame<cr>
+
+" nmap <leader>m :MarkedOpen!<cr>
+" nmap <leader>mq :MarkedQuit<cr>
+
+" toggle syntastic
+nmap <leader>s :SyntasticToggleMode<cr>
+
+
+" airline options
+let g:airline_powerline_fonts=1
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_theme='base16'
+let g:airline#extensions#tabline#enabled = 1
+
+" don't hide quotes in json files
+let g:vim_json_syntax_conceal = 0
+
+
+" pymode
+let g:pymode_lint_ignore = "E501,E122,E128,E126,E121"
+let g:pymode_lint_mccabe_complexity = 12
+let g:pymode_run = 0
+let g:pymode_rope_autoimport_modules = ["bcrypt","uuid","os","shutil","appcardrestapi","appcardrestapi.*", "json", "sys", "datetime", "time", "pyramid", "sqlalchemy"]
+let g:pymode_rope_completion = 1
+let g:pymode_rope_lookup_project = 0
+" let g:pymode_rope_complete_on_dot = 1
+" let g:pymode_rope_completion_bind = '<C-Space>'
+
+
+" python-mode
+" nnoremap <silent> ,f :RopeFindOccurrences<CR>
+let g:pymode_breakpoint_key = '<leader>bp'
+map <leader>i :RopeAutoImport<CR>
+" nnoremap <leader>f :RopeFindOccurrences<CR>
+
+" jedi
+let g:jedi#goto_assignments_command = "<leader>j"
+let g:jedi#goto_definitions_command = "<leader>k"
+let g:jedi#use_tabs_not_buffers = 0
+
+" SQL
+au BufNewFile,BufRead *.sql SQLSetType plsql.vim
+
+" enable Camel and underscore movement.
+map <silent> <S-W> <Plug>CamelCaseMotion_w
+map <silent> <S-B> <Plug>CamelCaseMotion_b
+map <silent> <S-E> <Plug>CamelCaseMotion_e
+
+
+" TaskList.vim
+map <unique> <Leader>l <Plug>ToggleTaskList
+
+" Syntastic
+let g:syntastic_always_populate_loc_list = 1
+
+" Dash
+:nmap <silent> <leader>d <Plug>DashSearch
+:nmap <silent> <leader>s <Plug>DashGlobalSearch
+
+" easy tag
+:set tags=./tags;
+:let g:easytags_dynamic_files = 1
+:let g:easytags_async = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" recursively search up from dirname, sourcing all .vimrc.local files along the way
+function! ApplyLocalSettings(dirname)
+    " convert windows paths to unix style
+    let l:curDir = substitute(a:dirname, '\\', '/', 'g')
+
+    " walk to the top of the dir tree
+    let l:parentDir = strpart(l:curDir, 0, strridx(l:curDir, '/'))
+    if isdirectory(l:parentDir)
+        call ApplyLocalSettings(l:parentDir)
+    endif
+
+    " now walk back down the path and source .vimsettings as you find them.
+    " child directories can inherit from their parents
+    let l:settingsFile = a:dirname . '/.vimrc.local'
+    if filereadable(l:settingsFile)
+        exec ':source' . l:settingsFile
+    endif
+endfunction
+
+"Quickfix do
+command! -nargs=0 -bar Qargs execute 'args ' . QuickfixFilenames()
+function! QuickfixFilenames()
+  " Building a hash ensures we get each buffer only once
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(values(buffer_numbers))
+endfunction
+
+
+" Stolen improvments.
+let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
+set dictionary+=/usr/share/dict/words
+set spellfile=~/.vim/spell/en.utf-8.add
+set spell
+
+call ApplyLocalSettings(expand('.'))
