@@ -14,8 +14,10 @@
     # cnv = commit --no-verify
     # co = checkout
     # cob = checkout -b
-    # s = status --short
-    # ss  = status
+    s = status --short
+    ss = status
+    gs = stash
+    gsp = stash pop
     # br = branch -v
 
     # l = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
