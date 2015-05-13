@@ -1,0 +1,49 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" load plugins from vundle
+source ~/.vim/plugins.vim
+
+" Abbreviations
+abbr funciton function
+abbr teh the
+abbr tempalte template
+
+set nocompatible " not compatible with vi
+set autoread " detect when a file is changed
+
+" make backspace behave in a sane manner
+set backspace=indent,eol,start
+
+" set a map leader for more key combos
+let mapleader = ','
+let g:mapleader = ','
+
+set history=1000 " change history to 1000
+
+set clipboard=unnamed
+
+" faster redrawing
+set ttyfast
+
+" highlight conflicts
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+if has('autocmd') && !exists('autocommands_loaded')
+    let autocommands_loaded = 1
+    
+    " automatically resize panes on resize
+    autocmd VimResized * exe 'normal! \<c-w>='
+    autocmd BufWritePost .vimrc source %
+    autocmd BufWritePost .vimrc.local source %
+    " save all files on focus lost, ignoring warnings about untitled buffers
+   autocmd FocusLost * silent! wa
+endif
+
+" code folding settings
+set foldmethod=syntax " fold based on indent
+set foldnestmax=10 " deepest fold is 10 levels
+set nofoldenable " don't fold by default
+set foldlevel=1
+
