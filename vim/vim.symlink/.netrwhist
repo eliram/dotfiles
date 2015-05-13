@@ -1,5 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/eliram/.vim'
-let g:netrw_dirhist_2='/Users/eliram/.vim/bundle'
-let g:netrw_dirhist_3='/Users/eliram/.vim/bundle/vundle'
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/eliram/.dotfiles/.git/modules/vim/vim.symlink/bundle/Vundle.vim/branches'
+let g:netrw_dirhist_2='/Users/eliram/.dotfiles/.git/modules/vim/vim.symlink/bundle/Vundle.vim'
+let g:netrw_dirhist_3='/Users/eliram/.dotfiles/.git/modules/vim/vim.symlink/bundle'
+let g:netrw_dirhist_4='/Users/eliram/.dotfiles/.git/modules/vim/vim.symlink/bundle/vundle'
+let g:netrw_dirhist_5='/Users/eliram/.dotfiles/.git/modules/vim/vim.symlink/bundle'
+let g:netrw_dirhist_6='/Users/eliram/.dotfiles/.git/modules/vim/vim.symlink'
+let g:netrw_dirhist_7='/Users/eliram/.dotfiles/.git/modules/vim'
+let g:netrw_dirhist_8='/Users/eliram/.dotfiles/.git/modules'
