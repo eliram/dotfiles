@@ -20,5 +20,5 @@ Welcome to my setup - it is tuned to be used as a python development environment
 ## ZSH Plugins
 
 By default, the `.zshrc` file will source any file within `.dotfiles/zsh` that have the `.zsh` extension.
-=========
+
 [baed on the amazing dotfile project by nicknisi](https://github.com/nicknisi/dotfiles) 
