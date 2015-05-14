@@ -1,5 +1,8 @@
 # git aliases
 alias g='git'
+# Status (gw)
+alias gws='git status --short'
+alias gwS='git status'
 # Branch (b)
 alias gb='git branch'
 alias gbc='git checkout -b'
