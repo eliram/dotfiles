@@ -59,10 +59,18 @@ suspended_jobs() {
     fi
 }
 
+virtenv_indicator() {
+    if [[ -z $VIRTUAL_ENV ]] then
+        echo ""
+    else
+	echo "%{${fg_bold[white]}%}(env: %{${fg[green]}%}`basename \"$VIRTUAL_ENV\"`%{${fg_bold[white]}%})%{${reset_color}%}"
+    fi
+}
+
 precmd() {
     vcs_info
     print -P '\n%F{013}%~'
 }
 
 export PROMPT='%(?.%F{magenta}.%F{red})❯%f '
-export RPROMPT='`git_dirty`%F{241}$vcs_info_msg_0_%f `needs_push``suspended_jobs`'
+export RPROMPT='`virtenv_indicator` `git_dirty`%F{241}$vcs_info_msg_0_%f `needs_push``suspended_jobs`'

@@ -1,4 +1,27 @@
-# # git aliases
+# git aliases
+alias g='git'
+# Branch (b)
+alias gb='git branch'
+alias gbc='git checkout -b'
+# Commit (c)
+alias gc='git commit --verbose'
+alias gca='git commit --verbose --all'
+alias gcm='git commit --message'
+alias gco='git checkout'
+alias gcp='git cherry-pick --ff'
+# Fetch (f)
+alias gf='git fetch'
+# Push (p)
+alias gp='git push'
+# Rebase (r)
+alias gr='git rebase'
+# Stash (s)
+alias gs='git stash'
+alias gsa='git stash apply'
+alias gsx='git stash drop'
+alias gsX='git-stash-clear-interactive'
+alias gsl='git stash list'
+alias gsp='git stash pop'
 # alias ga='git add'
 # alias gb='git branch'
 # alias gl='git pull'
