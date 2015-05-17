@@ -73,4 +73,5 @@ precmd() {
 }
 
 # export PROMPT='%(?.%F{magenta}.%F{red})❯%f '
-export RPROMPT='`virtenv_indicator` `git_dirty`%F{241}$vcs_info_msg_0_%f `needs_push``suspended_jobs`'
+# export RPROMPT='`virtenv_indicator` `git_dirty`%F{241}$vcs_info_msg_0_%f `needs_push``suspended_jobs`'
+export RPROMPT='`virtenv_indicator` `git_dirty`%F{241}%f `needs_push``suspended_jobs`'
