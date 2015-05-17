@@ -1,11 +1,20 @@
 #!/bin/bash
 
+DOTFILES=$HOME/.dotfiles
+ZPREZTO=$DOTFILES/zsh
 echo "installing dotfiles"
 
 echo "initializing submodule(s)"
 git submodule update --init --recursive
 
+echo "initializing prezto submodule(s)"
+cd $ZPREZTO
+git submodule update --init --recursive
+cd $DOTFILES
+
 source install/link.sh
+# always install zprezto after link
+source install/zprezto.sh
 
 if [ "$(uname)" == "Darwin" ]; then
     echo "running on OSX"
