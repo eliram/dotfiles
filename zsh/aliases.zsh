@@ -80,3 +80,9 @@ alias pumpitup="osascript -e 'set volume 10'"
 # Kill all the tabs in Chrome to free up memory
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
+
+#start and stop redis on oxs
+# First you need to setup redis as a service managed by launchctl:
+# ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
+alias redis-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist"
+alias redis-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.redis.plist"

@@ -1,9 +1,7 @@
-if application "Spotify" is running then
-  tell application "Spotify"
+if application "Rdio" is running then
+  tell application "Rdio"
     set theName to name of the current track
     set theArtist to artist of the current track
-    set theAlbum to album of the current track
-    set theUrl to spotify url of the current track
     try
       return "♫  " & theName & " - " & theArtist
     on error err

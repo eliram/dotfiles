@@ -26,6 +26,7 @@ set clipboard=unnamed
 
 " faster redrawing
 set ttyfast
+set lazyredraw
 
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -89,7 +90,7 @@ execute "set background=".$BACKGROUND
 execute "colorscheme ".$THEME
 
 " set number " show line numbers
-set relativenumber " show relative line numbers
+" set relativenumber " show relative line numbers
 set number " show the current line number"
 
 set wrap "turn on line wrapping
@@ -304,6 +305,7 @@ let g:vim_json_syntax_conceal = 0
 
 
 " pymode
+let g:pymode_rope = 0
 let g:pymode_lint_ignore = "E501,E122,E128,E126,E121"
 let g:pymode_lint_mccabe_complexity = 12
 let g:pymode_run = 0

@@ -49,6 +49,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'benmills/vimux'
+Plugin 'rizzatti/dash.vim'
 " Plugin 'julienr/vim-cellmode'
 
 
