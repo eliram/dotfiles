@@ -16,3 +16,4 @@ brew install zsh
 brew install z
 brew install htop
 brew install ctags-exuberant
+brew update && brew tap nviennot/tmate && brew install tmate
