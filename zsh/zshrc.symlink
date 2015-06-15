@@ -64,7 +64,7 @@ fi
 # source $(brew --prefix nvm)/nvm.sh
 
 source `brew --prefix`/etc/profile.d/z.sh
-
+. ~/z/z.sh
 
 # Base16 Shell
 # if [ -z "$THEME" ]; then

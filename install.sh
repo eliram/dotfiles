@@ -27,8 +27,13 @@ if [ "$(uname)" == "Darwin" ]; then
 
     echo "updating OSX settings"
     source installosx.sh
+else
+    echo "running on Ubuntu (probably)"
+
+    echo "apt-get install all"
+    source install/ubuntu.sh
 fi
 
 
 echo "configuring zsh as default shell"
-chsh -s $(which zsh)
+sudo chsh -s $(which zsh)
