@@ -28,7 +28,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'AzizLight/TaskList.vim'
 Plugin 'duff/vim-bufonly'
 Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+" Plugin 'xolox/vim-easytags'
 
 Plugin 'tomtom/tlib_vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
