@@ -25,6 +25,9 @@ if [ "$(uname)" == "Darwin" ]; then
     echo "brewing all the things"
     source install/brew.sh
 
+    echo "piping all the things"
+    source install/pip.sh
+
     echo "updating OSX settings"
     source installosx.sh
 else
