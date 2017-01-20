@@ -51,20 +51,25 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'benmills/vimux'
 Plugin 'rizzatti/dash.vim'
 " Plugin 'julienr/vim-cellmode'
-
+" JS
+Plugin 'ternjs/tern_for_vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'pangloss/vim-javascript'
 
 
 
 " Colorschemes
 " colorschemes
-Plugin 'chriskempson/base16-vim'
-" Plugin 'altercation/vim-colors-solarized'
+" Plugin 'chriskempson/base16-vim'
+Plugin 'altercation/vim-colors-solarized'
 
 " Python
 Plugin 'klen/python-mode'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'pitluga/vimux-nose-test'
 
+" AngularJS
+Plugin 'burnettk/vim-angular'
 " Languages
 
 

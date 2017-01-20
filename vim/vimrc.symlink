@@ -47,10 +47,15 @@ if has('autocmd') && !exists('autocommands_loaded')
 endif
 
 " code folding settings
+" let javaScript_fold=1         " JavaScript
+" syntax region foldBraces start=/{/ end=/}/
+" set syntax=javaScript
+
 set foldmethod=syntax " fold based on indent
 set foldnestmax=10 " deepest fold is 10 levels
 set nofoldenable " don't fold by default
 set foldlevel=1
+" let javaScript_fold=1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -87,19 +92,27 @@ set encoding=utf8
 let base16colorspace=256  " Access colors present in 256 colorspace"
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors"
 execute "set background=".$BACKGROUND
-execute "colorscheme ".$THEME
+" execute "colorscheme ".$THEME
+let g:solarized_termcolors=256
+colorscheme solarized
+set background=dark
 
 " set number " show line numbers
 set relativenumber " show relative line numbers
 set number " show the current line number"
+set cursorline
 
 set wrap "turn on line wrapping
 set wrapmargin=8 " wrap lines when coming within n characters from side
 set linebreak " set soft wrapping
 set showbreak=… " show ellipsis at breaking
 
+
 set autoindent " automatically set indent of new line
 set smartindent
+autocmd FileType javascript set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups, and undo
@@ -323,7 +336,10 @@ map <leader>i :RopeAutoImport<CR>
 " nnoremap <leader>f :RopeFindOccurrences<CR>
 
 " jedi
-let g:jedi#goto_assignments_command = "<leader>j"
+" let g:jedi#goto_assignments_command = "<leader>j"
+nnoremap <leader>jd :YcmCompleter GoTo<CR>'
+nnoremap <leader>j :YcmCompleter GoToReferences<CR>'
+" let :YcmCompleter GoToReferences = "<leader>j"
 let g:jedi#goto_definitions_command = "<leader>k"
 let g:jedi#use_tabs_not_buffers = 0
 
@@ -341,10 +357,16 @@ map <unique> <Leader>l <Plug>ToggleTaskList
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_javascript_checkers=['jscs']
+autocmd FileType javascript let b:syntastic_checkers = findfile('.jscsrc', '.;') != '' ? ['jscs'] : ['jshint']
+let g:javascript_plugin_jsdoc = 1
 
 " Dash
-:nmap <silent> <leader>d <Plug>DashSearch
-:nmap <silent> <leader>s <Plug>DashGlobalSearch
+:nmap <silent> <leader>s <Plug>DashSearch
+" :nmap <silent> <leader>s <Plug>DashGlobalSearch
+let g:dash_map = {
+    \ 'python' : ['pandas', 'Python 2', 'Redis', 'NumPy']
+    \ }
 
 " easy tag
 :set tags=./tags;
