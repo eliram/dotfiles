@@ -42,7 +42,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-sensible'
 " Plugin 'tpope/vim-sleuth'
-Plugin 'tpope/vim-bundler'
+" Plugin 'tpope/vim-bundler'
 
 Plugin 'gregsexton/gitv'
 
@@ -55,6 +55,8 @@ Plugin 'rizzatti/dash.vim'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-dispatch'
+Plugin 'janko-m/vim-test'
 
 
 
@@ -64,8 +66,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'altercation/vim-colors-solarized'
 
 " Python
-Plugin 'klen/python-mode'
-Plugin 'davidhalter/jedi-vim'
+" Plugin 'klen/python-mode'
+" Plugin 'davidhalter/jedi-vim'
 Plugin 'pitluga/vimux-nose-test'
 
 " AngularJS
