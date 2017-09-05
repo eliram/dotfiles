@@ -13,6 +13,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'rking/ag.vim'
+Plugin 'Chiel92/vim-autoformat'
+
 " Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'Lokaltog/vim-easymotion'
@@ -66,7 +68,7 @@ Plugin 'janko-m/vim-test'
 Plugin 'altercation/vim-colors-solarized'
 
 " Python
-" Plugin 'klen/python-mode'
+Plugin 'klen/python-mode'
 " Plugin 'davidhalter/jedi-vim'
 Plugin 'pitluga/vimux-nose-test'
 

@@ -4,5 +4,6 @@
 
 sudo pip install virtualenv
 sudo pip install virtualenvwrapper
+sudo pip install pylama-pylint
 
 mkdir -p ~/Envs

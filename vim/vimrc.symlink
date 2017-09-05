@@ -5,6 +5,7 @@
 " load plugins from vundle
 source ~/.vim/plugins.vim
 
+
 " Abbreviations
 abbr funciton function
 abbr teh the
@@ -201,7 +202,7 @@ nmap <silent> // :nohlsearch<CR>
 
 
 " flake 8
-let g:flake8_max_line_length=120
+let g:flake8_max_line_length=200
 
 
 " fix indent
@@ -304,9 +305,14 @@ nmap <silent><leader>gb :Gblame<cr>
 
 " toggle syntastic
 nmap <leader>s :SyntasticToggleMode<cr>
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+" let g:syntastic_python_checkers = ['pylint', 'pep8', 'pyflakes', 'pylama']
+let g:syntastic_python_checkers = ['pylint', 'pep8']
+let g:syntastic_javascript_checkers = ['jshint', 'JSLint']
+let g:syntastic_python_pylint_args = "--load-plugins pylint_django --disable=C0302"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_javascript_checkers = ['jshint', 'JSLint']
 
 
 " airline options
@@ -324,10 +330,14 @@ let g:vim_json_syntax_conceal = 0
 let g:pymode_rope = 0
 let g:pymode_lint_ignore = "E501,E122,E128,E126,E121"
 let g:pymode_lint_mccabe_complexity = 12
-let g:pymode_run = 0
+let g:pymode_run = 1
 let g:pymode_rope_autoimport_modules = ["bcrypt","uuid","os","shutil","appcardrestapi","appcardrestapi.*", "json", "sys", "datetime", "time", "pyramid", "sqlalchemy"]
-let g:pymode_rope_completion = 1
-let g:pymode_rope_lookup_project = 0
+let g:pymode_rope_completion = 0
+let g:pymode_rope_lookup_project = 1
+" let g:pymode_rope_autoimport=1
+let g:pymode_rope_organize_imports_bind ='<leader>i'
+
+let g:pymode_options_max_line_length = 200
 " let g:pymode_rope_complete_on_dot = 1
 " let g:pymode_rope_completion_bind = '<C-Space>'
 
@@ -335,14 +345,14 @@ let g:pymode_rope_lookup_project = 0
 " python-mode
 " nnoremap <silent> ,f :RopeFindOccurrences<CR>
 let g:pymode_breakpoint_key = '<leader>bp'
-map <leader>i :RopeAutoImport<CR>
+" map <leader>i :RopeAutoImport<CR>
 " nnoremap <leader>f :RopeFindOccurrences<CR>
 
 " jedi
 " let g:jedi#goto_assignments_command = "<leader>j"
 nnoremap <leader>jd :YcmCompleter GoTo<CR>'
 nnoremap <leader>j :YcmCompleter GoToReferences<CR>'
-" let :YcmCompleter GoToReferences = "<leader>j"
+" let :YcmCompleter GoToReferences . "<leader>j"
 let g:jedi#goto_definitions_command = "<leader>k"
 let g:jedi#use_tabs_not_buffers = 0
 
@@ -361,6 +371,7 @@ map <unique> <Leader>l <Plug>ToggleTaskList
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_javascript_checkers=['jscs']
+let g:syntastic_python_pylint_post_args="--max-line-length=200"
 autocmd FileType javascript let b:syntastic_checkers = findfile('.jscsrc', '.;') != '' ? ['jscs'] : ['jshint']
 let g:javascript_plugin_jsdoc = 1
 
@@ -375,6 +386,10 @@ let g:dash_map = {
 :set tags=./tags;
 :let g:easytags_dynamic_files = 1
 :let g:easytags_async = 1
+
+" vim-autoformat
+let g:formatter_yapf_style = 'pep8'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
