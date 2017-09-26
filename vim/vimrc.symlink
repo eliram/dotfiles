@@ -303,16 +303,6 @@ nmap <silent><leader>gb :Gblame<cr>
 " nmap <leader>m :MarkedOpen!<cr>
 " nmap <leader>mq :MarkedQuit<cr>
 
-" toggle syntastic
-nmap <leader>s :SyntasticToggleMode<cr>
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-" let g:syntastic_python_checkers = ['pylint', 'pep8', 'pyflakes', 'pylama']
-let g:syntastic_python_checkers = ['pylint', 'pep8']
-let g:syntastic_javascript_checkers = ['jshint', 'JSLint']
-let g:syntastic_python_pylint_args = "--load-plugins pylint_django --disable=C0302"
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
 
 
 " airline options
@@ -339,7 +329,7 @@ let g:pymode_rope_organize_imports_bind ='<leader>i'
 
 let g:pymode_options_max_line_length = 200
 " let g:pymode_rope_complete_on_dot = 1
-" let g:pymode_rope_completion_bind = '<C-Space>'
+let g:pymode_rope_completion_bind = '<C-Space>'
 
 
 " python-mode
@@ -352,6 +342,7 @@ let g:pymode_breakpoint_key = '<leader>bp'
 " let g:jedi#goto_assignments_command = "<leader>j"
 nnoremap <leader>jd :YcmCompleter GoTo<CR>'
 nnoremap <leader>j :YcmCompleter GoToReferences<CR>'
+nnoremap <leader>k :YcmCompleter GetDoc<CR>'
 " let :YcmCompleter GoToReferences . "<leader>j"
 let g:jedi#goto_definitions_command = "<leader>k"
 let g:jedi#use_tabs_not_buffers = 0
@@ -366,21 +357,34 @@ map <silent> <S-E> <Plug>CamelCaseMotion_e
 
 
 " TaskList.vim
-map <unique> <Leader>l <Plug>ToggleTaskList
+" map <unique> <Leader>l <Plug>ToggleTaskList
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_javascript_checkers=['jscs']
-let g:syntastic_python_pylint_post_args="--max-line-length=200"
+" let g:syntastic_python_pylint_post_args="--max-line-length=200"
 autocmd FileType javascript let b:syntastic_checkers = findfile('.jscsrc', '.;') != '' ? ['jscs'] : ['jshint']
 let g:javascript_plugin_jsdoc = 1
 
+" toggle syntastic
+nmap <leader>s :SyntasticToggleMode<cr>
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" let g:syntastic_python_checkers = ['pylint', 'pep8', 'pyflakes', 'pylama']
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_javascript_checkers = ['jshint', 'JSLint']
+" let g:syntastic_python_pylint_args = "--load-plugins pylint_django --disable=C0302"
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_enable_python_checker = 1
+let g:syntastic_aggregate_errors = 1
+
 " Dash
-:nmap <silent> <leader>s <Plug>DashSearch
+" :nmap <silent> <leader>s <Plug>DashSearch
 " :nmap <silent> <leader>s <Plug>DashGlobalSearch
-let g:dash_map = {
-    \ 'python' : ['pandas', 'Python 2', 'Redis', 'NumPy']
-    \ }
+" let g:dash_map = {
+"     \ 'python' : ['pandas', 'Python 2', 'Redis', 'NumPy']
+    " \ }
 
 " easy tag
 :set tags=./tags;
@@ -430,5 +434,70 @@ let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
 set dictionary+=/usr/share/dict/words
 set spellfile=~/.vim/spell/en.utf-8.add
 set spell
+
+" ultisnips
+" let g:UltiSnipsExpandTrigger = '<C-j>'
+" let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+" let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+" YouCompleteMe and UltiSnips compatibility, with the helper of supertab
+" (via http://stackoverflow.com/a/22253548/1626737)
+let g:SuperTabDefaultCompletionType    = '<C-n>'
+let g:SuperTabCrMapping                = 0
+let g:UltiSnipsExpandTrigger           = '<tab>'
+let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+
+" let g:used_javascript_libs = 'underscore,jquery,angularjs,angularuirouter,chai,vue,d3'
+
+" vue.js
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_vue_checkers = ['eslint']
+" let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+" if matchstr(local_eslint, "^\/\\w") == ''
+" 	let local_eslint = getcwd() . "/" . local_eslint
+" endif
+" if executable(local_eslint)
+" 	let g:syntastic_javascript_eslint_exec = local_eslint
+" 	let g:syntastic_vue_eslint_exec = local_eslint
+" endif
+
+" easymotion
+" JK motions: Line motions
+" <Leader>f{char} to move to {char}
+map  <Leader><Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap <Leader><Leader>s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader><Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader><Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader><Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader><Leader>w <Plug>(easymotion-overwin-w)
+
+map <Leader><Leader>j <Plug>(easymotion-j)
+map <Leader><Leader>k <Plug>(easymotion-k)
+map <Leader><Leader>l <Plug>(easymotion-lineforward)
+map <Leader><Leader>h <Plug>(easymotion-linebackward)
+
+function! s:config_easyfuzzymotion(...) abort
+	return extend(copy({
+	\   'converters': [incsearch#config#fuzzyword#converter()],
+	\   'modules': [incsearch#config#easymotion#module({'overwin':	1})],
+	\   'keymap': {"\<CR>": '<Over>(easymotion)'},
+	\   'is_expr': 0,
+	\   'is_stay': 1
+	\ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+" noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command':'?'}))
+" noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
+
 
 call ApplyLocalSettings(expand('.'))

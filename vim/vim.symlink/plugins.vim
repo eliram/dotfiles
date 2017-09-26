@@ -17,25 +17,33 @@ Plugin 'Chiel92/vim-autoformat'
 
 " Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-unimpaired'
+
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'haya14busa/incsearch-fuzzy.vim'
+Plugin 'haya14busa/incsearch-easymotion.vim'
+
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'bling/vim-bufferline'
-Plugin 'ervandew/supertab'
 Plugin 'sjl/gundo.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'groenewege/vim-less'
+" Plugin 'groenewege/vim-less'
 Plugin 'scrooloose/syntastic'
 Plugin 'elzr/vim-json'
 Plugin 'majutsushi/tagbar'
-Plugin 'AzizLight/TaskList.vim'
-Plugin 'duff/vim-bufonly'
-Plugin 'xolox/vim-misc'
+" Plugin 'AzizLight/TaskList.vim'
+" Plugin 'duff/vim-bufonly'
+" Plugin 'xolox/vim-misc'
 " Plugin 'xolox/vim-easytags'
 
-Plugin 'tomtom/tlib_vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'garbas/vim-snipmate'
+" Plugin 'tomtom/tlib_vim'  " needed for snipmate
+" Plugin 'MarcWeber/vim-addon-mw-utils'  " needed for snipmate
+" Plugin 'garbas/vim-snipmate'
+Plugin 'ervandew/supertab'  " needed for ultisnps mapping with YCM
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'matthewsimo/angular-vim-snippets'
+" Plugin 'othree/javascript-libraries-syntax.vim'
 
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
@@ -51,7 +59,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'benmills/vimux'
-Plugin 'rizzatti/dash.vim'
+" Plugin 'rizzatti/dash.vim'
 " Plugin 'julienr/vim-cellmode'
 " JS
 Plugin 'ternjs/tern_for_vim'
@@ -70,11 +78,17 @@ Plugin 'altercation/vim-colors-solarized'
 " Python
 Plugin 'klen/python-mode'
 " Plugin 'davidhalter/jedi-vim'
-Plugin 'pitluga/vimux-nose-test'
+" Plugin 'pitluga/vimux-nose-test'
 
 " AngularJS
 Plugin 'burnettk/vim-angular'
 " Languages
+
+" Vue
+Plugin 'posva/vim-vue'
+" Plugin 'sekel/vim-vue-syntastic'
+
+
 
 
 call vundle#end()            " required
