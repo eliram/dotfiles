@@ -56,7 +56,8 @@ Plugin 'tpope/vim-sensible'
 
 Plugin 'gregsexton/gitv'
 
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'benmills/vimux'
 " Plugin 'rizzatti/dash.vim'
