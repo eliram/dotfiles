@@ -236,10 +236,10 @@ let NERDTreeMinimalUI=1
 let g:ctrlp_by_filename = 1
 let g:ctrlp_working_path_mode='a'
 let g:ctrlp_map='<leader>t'
-nnoremap <silent> ,b :CtrlPBuffer<CR>
-nnoremap <silent> ,m :CtrlPMRUFiles<CR>
+" nnoremap <silent> ,b :CtrlPBuffer<CR>
+" nnoremap <silent> ,m :CtrlPMRUFiles<CR>
 " nnoremap <silent> ,T :CtrlPBufTag<CR>
-nnoremap <silent> ,L :CtrlPLine<CR>
+" nnoremap <silent> ,L :CtrlPLine<CR>
 " nnoremap <silent> ,F :CtrlPCurFile<CR>
 " map <silent> <leader>[ :CtrlPTag<CR>
 let g:ctrlp_match_window = 'top,order:ttb'
@@ -260,6 +260,17 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+
+
+"FZF
+let g:fzf_command_prefix = 'Fzf'
+let g:fzf_layout = { 'up': '~20%' }
+nnoremap <silent> ,t :FzfFiles<CR>
+nnoremap <silent> ,b :FzfBuffer<CR>
+nnoremap <silent> ,m :FzfHistory<CR>
+nnoremap <silent> ,T :FzfTags<CR>
+nnoremap <silent> ,L :FzfLines<CR>
+
 
 " TagBar
 let g:tagbar_autoclose = 1
@@ -509,5 +520,16 @@ noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 " noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command':'?'}))
 " noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
 
+" ALE
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+" Quickly fix spelling errors choosing the first result
+nmap <Leader>z z=1<CR><CR>
+
+" Fix annoyances in the QuickFix window, like scrolling too much
+autocmd FileType qf setlocal number nolist scrolloff=0
+autocmd Filetype qf wincmd J " Makes sure it's at the bottom of the vim window
 
 call ApplyLocalSettings(expand('.'))

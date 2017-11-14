@@ -88,3 +88,5 @@ export VIRTUAL_ENV_DISABLE_PROMPT=True
 export WORKON_HOME=~/Envs
 source /usr/local/bin/virtualenvwrapper.sh
 workon mintigo
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

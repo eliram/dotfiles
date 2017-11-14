@@ -1,100 +1,116 @@
 filetype off                   " required!
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle
-call vundle#begin()
+" set rtp+=~/.vim/bundle/vundle
+" call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Plugin 'gmarik/vundle'
+" Plug 'gmarik/vundle'
+
+" Install vim-plug if we don't already have it
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
 
 " Utilities
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'rking/ag.vim'
-Plugin 'Chiel92/vim-autoformat'
 
-" Plugin 'Raimondi/delimitMate'
-Plugin 'tpope/vim-unimpaired'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+" Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'rking/ag.vim'
+Plug 'Chiel92/vim-autoformat'
 
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'haya14busa/incsearch-fuzzy.vim'
-Plugin 'haya14busa/incsearch-easymotion.vim'
+" A collection of language packs for Vim.
+" Plug 'sheerun/vim-polyglot'
 
-Plugin 'bkad/CamelCaseMotion'
-Plugin 'bling/vim-bufferline'
-Plugin 'sjl/gundo.vim'
-Plugin 'airblade/vim-gitgutter'
-" Plugin 'groenewege/vim-less'
-" Plugin 'scrooloose/syntastic'
-Plugin 'w0rp/ale'
-Plugin 'elzr/vim-json'
-Plugin 'majutsushi/tagbar'
-" Plugin 'AzizLight/TaskList.vim'
-" Plugin 'duff/vim-bufonly'
-" Plugin 'xolox/vim-misc'
-" Plugin 'xolox/vim-easytags'
+" Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-unimpaired'
 
-" Plugin 'tomtom/tlib_vim'  " needed for snipmate
-" Plugin 'MarcWeber/vim-addon-mw-utils'  " needed for snipmate
-" Plugin 'garbas/vim-snipmate'
-Plugin 'ervandew/supertab'  " needed for ultisnps mapping with YCM
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'matthewsimo/angular-vim-snippets'
-" Plugin 'othree/javascript-libraries-syntax.vim'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
 
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-sensible'
-" Plugin 'tpope/vim-sleuth'
-" Plugin 'tpope/vim-bundler'
+Plug 'bkad/CamelCaseMotion'
+Plug 'bling/vim-bufferline'
+Plug 'sjl/gundo.vim'
+Plug 'airblade/vim-gitgutter'
+" Plug 'groenewege/vim-less'
+" Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
+Plug 'elzr/vim-json'
+Plug 'majutsushi/tagbar'
+" Plug 'AzizLight/TaskList.vim'
+" Plug 'duff/vim-bufonly'
+" Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-easytags'
 
-Plugin 'gregsexton/gitv'
+" Plug 'tomtom/tlib_vim'  " needed for snipmate
+" Plug 'MarcWeber/vim-addon-mw-utils'  " needed for snipmate
+" Plug 'garbas/vim-snipmate'
+Plug 'ervandew/supertab'  " needed for ultisnps mapping with YCM
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'matthewsimo/angular-vim-snippets'
+" Plug 'othree/javascript-libraries-syntax.vim'
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'benmills/vimux'
-" Plugin 'rizzatti/dash.vim'
-" Plugin 'julienr/vim-cellmode'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-sensible'
+" Plug 'tpope/vim-sleuth'
+" Plug 'tpope/vim-bundler'
+
+Plug 'gregsexton/gitv'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
+" Plug 'rizzatti/dash.vim'
+" Plug 'julienr/vim-cellmode'
 " JS
-Plugin 'ternjs/tern_for_vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'pangloss/vim-javascript'
-Plugin 'tpope/vim-dispatch'
-Plugin 'janko-m/vim-test'
+Plug 'ternjs/tern_for_vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-dispatch'
+Plug 'janko-m/vim-test'
 
 
 
 " Colorschemes
-" colorschemes
-" Plugin 'chriskempson/base16-vim'
-Plugin 'altercation/vim-colors-solarized'
+" Plug 'chriskempson/base16-vim'
+Plug 'altercation/vim-colors-solarized'
 
 " Python
-Plugin 'klen/python-mode'
-" Plugin 'davidhalter/jedi-vim'
-" Plugin 'pitluga/vimux-nose-test'
+" Plug 'klen/python-mode', { 'for': 'python' }
+" Plug 'davidhalter/jedi-vim'
+" Plug 'pitluga/vimux-nose-test'
 
 " AngularJS
-Plugin 'burnettk/vim-angular'
+Plug 'burnettk/vim-angular'
 " Languages
 
 " Vue
-Plugin 'posva/vim-vue'
-" Plugin 'sekel/vim-vue-syntastic'
+Plug 'posva/vim-vue'
+" Plug 'sekel/vim-vue-syntastic'
 
 " Pug.js
-Plugin 'dNitro/vim-pug-complete'
-Plugin 'digitaltoad/vim-pug'
-Plugin 'othree/html5.vim'
+Plug 'dNitro/vim-pug-complete'
+Plug 'digitaltoad/vim-pug'
+Plug 'othree/html5.vim'
 
 
-call vundle#end()            " required
+" call vundle#end()            " required
 filetype plugin indent on    " required
+call plug#end()
