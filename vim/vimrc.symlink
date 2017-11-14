@@ -265,7 +265,7 @@ endif
 "FZF
 let g:fzf_command_prefix = 'Fzf'
 let g:fzf_layout = { 'up': '~20%' }
-nnoremap <silent> ,t :FzfFiles<CR>
+nnoremap <silent> ,t :FzfGFiles<CR>
 nnoremap <silent> ,b :FzfBuffer<CR>
 nnoremap <silent> ,m :FzfHistory<CR>
 nnoremap <silent> ,T :FzfTags<CR>
