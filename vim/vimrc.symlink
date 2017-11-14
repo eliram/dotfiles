@@ -111,7 +111,9 @@ set showbreak=… " show ellipsis at breaking
 
 set autoindent " automatically set indent of new line
 set smartindent
-autocmd FileType javascript set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+" autocmd FileType javascript set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+autocmd FileType javascript set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
+autocmd FileType vue set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 
 
@@ -310,7 +312,7 @@ let g:airline_powerline_fonts=0
 " let g:airline_left_sep=''
 " let g:airline_right_sep=''
 let g:airline_theme='base16'
-let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
 
 " don't hide quotes in json files
 let g:vim_json_syntax_conceal = 0

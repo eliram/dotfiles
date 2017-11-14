@@ -28,7 +28,8 @@ Plugin 'bling/vim-bufferline'
 Plugin 'sjl/gundo.vim'
 Plugin 'airblade/vim-gitgutter'
 " Plugin 'groenewege/vim-less'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'elzr/vim-json'
 Plugin 'majutsushi/tagbar'
 " Plugin 'AzizLight/TaskList.vim'
@@ -89,7 +90,10 @@ Plugin 'burnettk/vim-angular'
 Plugin 'posva/vim-vue'
 " Plugin 'sekel/vim-vue-syntastic'
 
-
+" Pug.js
+Plugin 'dNitro/vim-pug-complete'
+Plugin 'digitaltoad/vim-pug'
+Plugin 'othree/html5.vim'
 
 
 call vundle#end()            " required
