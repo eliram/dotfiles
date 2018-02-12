@@ -266,7 +266,8 @@ endif
 let g:fzf_command_prefix = 'Fzf'
 let g:fzf_layout = { 'up': '~20%' }
 nnoremap <silent> ,t :FzfGFiles<CR>
-nnoremap <silent> ,b :FzfBuffer<CR>
+nnoremap <silent> ,T :FzfFiles<CR>
+nnoremap <silent> ,B :FzfBuffer<CR>
 nnoremap <silent> ,m :FzfHistory<CR>
 nnoremap <silent> ,T :FzfTags<CR>
 nnoremap <silent> ,L :FzfLines<CR>
@@ -333,7 +334,7 @@ let g:vim_json_syntax_conceal = 0
 let g:pymode_rope = 0
 let g:pymode_lint_ignore = "E501,E122,E128,E126,E121"
 let g:pymode_lint_mccabe_complexity = 12
-let g:pymode_run = 1
+let g:pymode_run = 0
 let g:pymode_rope_autoimport_modules = ["bcrypt","uuid","os","shutil","appcardrestapi","appcardrestapi.*", "json", "sys", "datetime", "time", "pyramid", "sqlalchemy"]
 let g:pymode_rope_completion = 0
 let g:pymode_rope_lookup_project = 1
@@ -347,7 +348,7 @@ let g:pymode_rope_completion_bind = '<C-Space>'
 
 " python-mode
 " nnoremap <silent> ,f :RopeFindOccurrences<CR>
-let g:pymode_breakpoint_key = '<leader>bp'
+let g:pymode_breakpoint_key = '<leader>b'
 " map <leader>i :RopeAutoImport<CR>
 " nnoremap <leader>f :RopeFindOccurrences<CR>
 
@@ -524,6 +525,8 @@ noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_python_flake8_options = '--ignore E501'
+let g:ale_python_pylint_options = "--load-plugins pylint_django --disable=C0302,C0111,R0913"
 
 " Quickly fix spelling errors choosing the first result
 nmap <Leader>z z=1<CR><CR>
