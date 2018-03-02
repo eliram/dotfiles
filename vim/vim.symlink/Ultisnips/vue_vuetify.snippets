@@ -1,0 +1,42 @@
+global !p
+def complete(t, opts):
+  if t:
+    orig_opts=opts
+    opts = [ m[len(t):] for m in opts if m.startswith(t) ]
+    opts2 = [ m for m in orig_opts if m.startswith(t) ]
+  if len(opts) == 1:
+    return opts[0], opts2[0]
+  return "(" + '|'.join(opts) + ')', ''
+endglobal
+
+snippet vuel "v-flex element" b
+  <v-${1:flex}>
+  </v-${1/(\w+).*/$1/}>
+endsnippet
+
+snippet vel "vuetify elements" b
+<v-$1`!p 
+partialName, elementName = complete(t[1], ['flex', 'container', 'layout', 'icon', 'tabs', 'toolbar', 'spacer', 'menu', 'btn', 'card', 'list'])
+snip.rv=partialName
+`${2: xs2}${3: class="$4"}>
+  $5
+</v-`!p snip.rv=elementName`>
+endsnippet
+
+snippet vtab "vuetify elements" b
+<v-tabs-$1`!p 
+partialName, elementName = complete(t[1], ['bar', 'slider', 'item'])
+snip.rv=partialName
+`${2: xs2}${3: class="$4"}>
+  $5
+</v-tabs-`!p snip.rv=elementName`>
+endsnippet
+
+snippet vlist "vuetify elements" b
+<v-list-$1`!p 
+partialName, elementName = complete(t[1], ['tile', 'tile-avatar', 'tile-content', 'tile-title', 'tile-sub-title'])
+snip.rv=partialName
+`${2: xs2}${3: class="$4"}>
+  $5
+</v-list-`!p snip.rv=elementName`>
+endsnippet
