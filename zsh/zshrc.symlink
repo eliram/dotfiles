@@ -90,3 +90,6 @@ source /usr/local/bin/virtualenvwrapper.sh
 workon mintigo
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export NVM_DIR=~/.nvm
+source ~/.nvm/nvm.sh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

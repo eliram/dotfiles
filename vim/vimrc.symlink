@@ -535,4 +535,16 @@ nmap <Leader>z z=1<CR><CR>
 autocmd FileType qf setlocal number nolist scrolloff=0
 autocmd Filetype qf wincmd J " Makes sure it's at the bottom of the vim window
 
+" remapping arrow to move between the split windows
+noremap <up> <C-w><up>
+noremap <down> <C-w><down>
+noremap <left> <C-w><left>
+noremap <right> <C-w><right> 
+
+" Hard mode - only when i fill strong ;-)
+noremap h <NOP>
+noremap j <NOP>
+noremap k <NOP>
+noremap l <NOP>
+
 call ApplyLocalSettings(expand('.'))
