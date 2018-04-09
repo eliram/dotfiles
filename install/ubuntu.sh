@@ -21,4 +21,5 @@ sudo apt-get install zsh
 sudo apt-get install htop
 sudo apt-get install exuberant-ctags
 git clone https://github.com/rupa/z.git ~/z
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 sudo apt-get install build-essential cmake
