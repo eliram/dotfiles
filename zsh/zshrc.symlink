@@ -85,11 +85,16 @@ fi
 export VIRTUAL_ENV_DISABLE_PROMPT=True
 
 # export WORKON_HOME=/Users/eliram/.virtualenvs
-export WORKON_HOME=~/Envs
+export WORKON_HOME=~/virtualenv
 source /usr/local/bin/virtualenvwrapper.sh
-workon mintigo
+# this is in order to use the ipython from inside the virtualenv
+alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+# workon mintigo
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export NVM_DIR=~/.nvm
 source ~/.nvm/nvm.sh
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

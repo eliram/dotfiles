@@ -118,6 +118,10 @@ bind -t vi-copy 'y' copy-selection
 bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 bind C-v run "tmux set-buffer $(reattach-to-user-namespace pbpaste); tmux paste-buffer")
 
+# Pressing Ctrl+Shift+Left (will move the current window to the left. Similarly right. No need to use the modifier (C-b).
+bind-key -n C-S-Left swap-window -t -1
+bind-key -n C-S-Right swap-window -t +1
+
 ##############################
 ### Color & Style Settings ###
 ##############################
