@@ -375,32 +375,32 @@ map <silent> <S-E> <Plug>CamelCaseMotion_e
 " TaskList.vim
 " map <unique> <Leader>l <Plug>ToggleTaskList
 
-" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_javascript_checkers=['jscs']
-let g:syntastic_json_checkers=['jsonlint']
+" " Syntastic
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_javascript_checkers=['jscs']
+" let g:syntastic_json_checkers=['jsonlint']
 
-" let g:syntastic_python_pylint_post_args="--max-line-length=200"
-autocmd FileType javascript let b:syntastic_checkers = findfile('.jscsrc', '.;') != '' ? ['jscs'] : ['jshint']
-let g:javascript_plugin_jsdoc = 1
+" " let g:syntastic_python_pylint_post_args="--max-line-length=200"
+" autocmd FileType javascript let b:syntastic_checkers = findfile('.jscsrc', '.;') != '' ? ['jscs'] : ['jshint']
+" let g:javascript_plugin_jsdoc = 1
 
-" toggle syntastic
-nmap <leader>s :SyntasticToggleMode<cr>
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" let g:syntastic_python_checkers = ['pylint', 'pep8', 'pyflakes', 'pylama']
-let g:syntastic_python_checkers = ['pylint']
-" let g:syntastic_python_checkers = ['pyflakes']
-let g:syntastic_javascript_checkers = ['jshint', 'JSLint']
-" C0111 - Missing %s docstring, C0302: Too many lines in module (%s) 
-" R0913  Too many arguments (%s/%s)
-let g:syntastic_python_pylint_args = "--load-plugins pylint_django --disable=C0302,C0111,R0913"
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_enable_python_checker = 0
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_enable_highlighting=1
-let g:syntastic_echo_current_error=1
+" " toggle syntastic
+" nmap <leader>s :SyntasticToggleMode<cr>
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" " let g:syntastic_python_checkers = ['pylint', 'pep8', 'pyflakes', 'pylama']
+" let g:syntastic_python_checkers = ['pylint']
+" " let g:syntastic_python_checkers = ['pyflakes']
+" let g:syntastic_javascript_checkers = ['jshint', 'JSLint']
+" " C0111 - Missing %s docstring, C0302: Too many lines in module (%s) 
+" " R0913  Too many arguments (%s/%s)
+" let g:syntastic_python_pylint_args = "--load-plugins pylint_django --disable=C0302,C0111,R0913"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_enable_python_checker = 0
+" let g:syntastic_aggregate_errors = 1
+" let g:syntastic_enable_highlighting=1
+" let g:syntastic_echo_current_error=1
 
 
 " Dash
@@ -526,9 +526,11 @@ noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 " ALE
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%] [%code%]'
 let g:ale_python_flake8_options = '--ignore E501'
-let g:ale_python_pylint_options = "--load-plugins pylint_django --disable=C0302,C0111,R0913"
+" let g:ale_python_pylint_options = "--load-plugins pylint_django --disable=C0302,C0111,R0913"
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 
 " Quickly fix spelling errors choosing the first result
 nmap <Leader>z z=1<CR><CR>

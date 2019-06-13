@@ -1,7 +1,7 @@
 # set -g default-command "reattach-to-user-namespace -l zsh"
 # tmux display things in 256 colors
 set -g default-terminal "screen-256color"
-set -g status-utf8 on
+# set -g status-utf8 on
 
 set -g history-limit 20000
 
@@ -99,10 +99,10 @@ bind -n WheelDownPane select-pane -t= \;                 send-keys -M
 # set -g mouse-select-window on
 
 # maximizing and restoring windows
-unbind Up
-bind Up new-window -d -n fullscreen \; swap-pane -s fullscreen.1 \; select-window -t fullscreen
-unbind Down
-bind Down last-window \; swap-pane -s fullscreen.1 \; kill-window -t fullscreen
+# unbind Up
+# bind Up new-window -d -n fullscreen \; swap-pane -s fullscreen.1 \; select-window -t fullscreen
+# unbind Down
+# bind Down last-window \; swap-pane -s fullscreen.1 \; kill-window -t fullscreen
 
 # set vi mode for copy mode
 setw -g mode-keys vi
@@ -111,8 +111,8 @@ unbind [
 bind Escape copy-mode
 unbind p
 bind p paste-buffer
-bind -t vi-copy 'v' begin-selection
-bind -t vi-copy 'y' copy-selection
+# bind -t vi-copy 'v' begin-selection
+# bind -t vi-copy 'y' copy-selection
 
 # Buffers to/from Mac clipboard, yay tmux book from pragprog
 bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
@@ -129,6 +129,7 @@ bind-key -n C-S-Right swap-window -t +1
 source ~/.dotfiles/tmux/theme.sh
 
 
+set -g @continuum-restore 'on'
 # plugins
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
