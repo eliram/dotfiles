@@ -64,10 +64,14 @@ fi
 # eval "$(hub alias -s)"
 
 # # source nvm
-# export NVM_DIR=~/.nvm
-# source $(brew --prefix nvm)/nvm.sh
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
 
-. ~/z/z.sh
+# . ~/z/z.sh
+if command -v brew >/dev/null 2>&1; then
+	# Load rupa's z if installed
+	[ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
+fi
 
 # Base16 Shell
 # if [ -z "$THEME" ]; then
@@ -86,18 +90,27 @@ export VIRTUAL_ENV_DISABLE_PROMPT=True
 
 # export WORKON_HOME=/Users/eliram/.virtualenvs
 export WORKON_HOME=~/virtualenv
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 # this is in order to use the ipython from inside the virtualenv
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 # workon mintigo
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export NVM_DIR=~/.nvm
-source ~/.nvm/nvm.sh
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
 fi
+
+
+# enable nox support
+# To activate completions for zsh you need to have
+# bashcompinit enabled in zsh:
+autoload -U bashcompinit
+bashcompinit
+
+# Afterwards you can enable completion for nox:
+eval "$(register-python-argcomplete nox)"
+

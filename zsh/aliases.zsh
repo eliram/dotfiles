@@ -86,3 +86,7 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 # ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
 alias redis-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist"
 alias redis-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.redis.plist"
+
+
+alias mysql=/usr/local/mysql/bin/mysql
+alias mysqladmin=/usr/local/mysql/bin/mysqladmin

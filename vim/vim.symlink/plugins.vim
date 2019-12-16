@@ -29,6 +29,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rking/ag.vim'
 Plug 'Chiel92/vim-autoformat'
 
+" README.md viewer
+Plug  'shime/vim-livedown'
+
 " A collection of language packs for Vim.
 " Plug 'sheerun/vim-polyglot'
 

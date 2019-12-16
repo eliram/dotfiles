@@ -205,6 +205,7 @@ nmap <silent> // :nohlsearch<CR>
 
 " flake 8
 let g:flake8_max_line_length=200
+let g:flake8_ignore="E722"
 
 
 " fix indent
@@ -528,6 +529,8 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%] [%code%]'
 let g:ale_python_flake8_options = '--ignore E501'
+" let g:ale_linters = {'javascript': ['eslint', 'jshint', 'prettier']}
+
 " let g:ale_python_pylint_options = "--load-plugins pylint_django --disable=C0302,C0111,R0913"
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
@@ -550,5 +553,9 @@ noremap <right> <C-w><right>
 " noremap j <NOP>
 " noremap k <NOP>
 " noremap l <NOP>
+
+" livedown.vim
+let g:livedown_autorun = 1
+
 
 call ApplyLocalSettings(expand('.'))
