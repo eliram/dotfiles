@@ -18,7 +18,14 @@ brew install htop
 brew install ctags-exuberant
 brew install node
 brew install cmake
-brew update && brew tap nviennot/tmate && brew install tmate
-
+# brew update && brew tap nviennot/tmate && brew install tmate
+brew install tmuxinator
+brew tap camspiers/taps
+brew install tmuxinator-fzf-start
+brew install jesseduffield/lazygit/lazygit
+# brew install lazygit
+brew install jesseduffield/lazydocker/lazydocker
+# brew install lazydocker
+brew install starship
 
 npm install -g bower gulp nodemon

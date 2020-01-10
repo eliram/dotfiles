@@ -113,4 +113,5 @@ bashcompinit
 
 # Afterwards you can enable completion for nox:
 eval "$(register-python-argcomplete nox)"
+eval "$(starship init zsh)"
 
