@@ -1,0 +1,6 @@
+Run step 1-3 in your iterm2/terminal
+
+git clone https://github.com/powerline/fonts (clone it anywhere, You can remove cloned dir after step-4)
+cd fonts
+./install.sh
+Open iTerm2->Preferences->Profiles->Text->Change Font-> Meslo LG S DZ Regular for Powerline

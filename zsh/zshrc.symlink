@@ -1,14 +1,19 @@
+# this is profiling need to uncomment here and in the end
+# zmodload zsh/zprof # top of your .zshrc file
+
 export DOTFILES=$HOME/.dotfiles
 export ZSH=$DOTFILES/zsh
 
-# Source Prezto.
-# ZDOTDIR=$DOTFILES/zsh
-if [[ -s "$ZSH/.zprezto/init.zsh" ]]; then
-  source "$ZSH/.zprezto/init.zsh"
-  autoload -Uz promptinit
-  promptinit
-  prompt steeef
-fi
+ZSH_THEME="agnoster"
+
+# # Source Prezto.
+# # ZDOTDIR=$DOTFILES/zsh
+# if [[ -s "$ZSH/.zprezto/init.zsh" ]]; then
+#   source "$ZSH/.zprezto/init.zsh"
+#   autoload -Uz promptinit
+#   promptinit
+#   prompt steeef
+# fi
 
 # define the code directory
 if [[ -d ~/code ]]; then
@@ -27,9 +32,15 @@ fi
 # fi
 
 
-# initialize autocomplete
-autoload -U compinit
-compinit
+# initialize autocomplete - do this only once a day (speed up)
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
+
+# autoload -U compinit
+# compinit
 
 # for config ($ZSH/**/*completion.sh) source $config
 
@@ -52,20 +63,9 @@ fi
 
 [ -z "$TMUX" ] && export TERM=xterm-256color
 
-# # install rbenv
-# if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# if [[ -d ~/.rvm ]]; then
-#     PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
-#     source ~/.rvm/scripts/rvm
-# fi
-
-# # alias git to hub
-# eval "$(hub alias -s)"
-
 # # source nvm
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+# export NVM_DIR=~/.nvm
+# source $(brew --prefix nvm)/nvm.sh
 
 # . ~/z/z.sh
 if command -v brew >/dev/null 2>&1; then
@@ -74,28 +74,27 @@ if command -v brew >/dev/null 2>&1; then
 fi
 
 # Base16 Shell
-# if [ -z "$THEME" ]; then
-    # export THEME="base16-atelierheath"
-    export THEME="solarized"
-# fi
+if [ -z "$THEME" ]; then
+    export THEME="base16-3024"
+    # export THEME="base16-solarized"
+fi
 if [ -z "$BACKGROUND" ]; then
     export BACKGROUND="dark"
 fi
 
-# BASE16_SHELL="$DOTFILES/.config/base16-shell/$THEME.$BACKGROUND.sh"
-# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-# source $BASE16_SHELL
+BASE16_SHELL="$DOTFILES/.config/base16-shell/$THEME.$BACKGROUND.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+source $BASE16_SHELL
 
 export VIRTUAL_ENV_DISABLE_PROMPT=True
 
-# export WORKON_HOME=/Users/eliram/.virtualenvs
 export WORKON_HOME=~/virtualenv
-# source /usr/local/bin/virtualenvwrapper.sh
+
 # this is in order to use the ipython from inside the virtualenv
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
-# workon mintigo
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -111,7 +110,11 @@ fi
 autoload -U bashcompinit
 bashcompinit
 
-# Afterwards you can enable completion for nox:
+# # Afterwards you can enable completion for nox:
 eval "$(register-python-argcomplete nox)"
+
+# Enable startship
 eval "$(starship init zsh)"
 
+# profiling
+# zprof # bottom of .zshrc
