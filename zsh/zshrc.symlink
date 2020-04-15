@@ -1,13 +1,14 @@
 # this is profiling need to uncomment here and in the end
 # zmodload zsh/zprof # top of your .zshrc file
+date "+%s.%N"
 
 export DOTFILES=$HOME/.dotfiles
 export ZSH=$DOTFILES/zsh
 
 ZSH_THEME="agnoster"
 
-# # Source Prezto.
-# # ZDOTDIR=$DOTFILES/zsh
+# Source Prezto.
+# ZDOTDIR=$DOTFILES/zsh
 # if [[ -s "$ZSH/.zprezto/init.zsh" ]]; then
 #   source "$ZSH/.zprezto/init.zsh"
 #   autoload -Uz promptinit
@@ -74,6 +75,7 @@ if command -v brew >/dev/null 2>&1; then
 fi
 
 # Base16 Shell
+export THEME="base16-3024"
 if [ -z "$THEME" ]; then
     export THEME="base16-3024"
     # export THEME="base16-solarized"
@@ -90,15 +92,12 @@ export VIRTUAL_ENV_DISABLE_PROMPT=True
 
 export WORKON_HOME=~/virtualenv
 
-# this is in order to use the ipython from inside the virtualenv
-alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
@@ -116,5 +115,8 @@ eval "$(register-python-argcomplete nox)"
 # Enable startship
 eval "$(starship init zsh)"
 
+if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+date "+%s.%N"
 # profiling
 # zprof # bottom of .zshrc
+export DISABLE_AUTO_TITLE=true 

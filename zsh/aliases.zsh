@@ -90,3 +90,5 @@ alias redis-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.redis.pl
 
 alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
+# this is in order to use the ipython from inside the virtualenv
+alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"

@@ -1,0 +1,9 @@
+pudb
+pur
+ipython
+flake8
+pylint
+pydocstyle
+jedi
+black
+pep8

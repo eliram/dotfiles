@@ -18,6 +18,10 @@ endif
 call plug#begin('~/.vim/plugged')
 
 
+" coc installation
+" Use release branch (Recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Utilities
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -26,6 +30,7 @@ Plug 'terryma/vim-multiple-cursors'
 " Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
 Plug 'rking/ag.vim'
 Plug 'Chiel92/vim-autoformat'
 
@@ -45,11 +50,11 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 
 Plug 'bkad/CamelCaseMotion'
 Plug 'bling/vim-bufferline'
-Plug 'sjl/gundo.vim'
+" Plug 'sjl/gundo.vim'
 Plug 'airblade/vim-gitgutter'
 " Plug 'groenewege/vim-less'
 " Plug 'scrooloose/syntastic'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'elzr/vim-json'
 Plug 'majutsushi/tagbar'
 " Plug 'AzizLight/TaskList.vim'
@@ -57,14 +62,8 @@ Plug 'majutsushi/tagbar'
 " Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-easytags'
 
-" Plug 'tomtom/tlib_vim'  " needed for snipmate
-" Plug 'MarcWeber/vim-addon-mw-utils'  " needed for snipmate
-" Plug 'garbas/vim-snipmate'
-Plug 'ervandew/supertab'  " needed for ultisnps mapping with YCM
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'matthewsimo/angular-vim-snippets'
-" Plug 'othree/javascript-libraries-syntax.vim'
 
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
@@ -85,10 +84,13 @@ Plug 'benmills/vimux'
 " Plug 'julienr/vim-cellmode'
 " JS
 Plug 'ternjs/tern_for_vim'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-dispatch'
 Plug 'janko-m/vim-test'
+Plug 'jshint/jshint'
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 
 

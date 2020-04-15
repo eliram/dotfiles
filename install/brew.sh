@@ -2,10 +2,13 @@
 # give me what I need, brew!
 
 # cli tools
+brew update
 brew install ag
 
 # development server setup
 brew install postgresql
+brew install mysql
+brew install rabbitmq
 brew install redis
 
 # development tools
@@ -27,5 +30,9 @@ brew install jesseduffield/lazygit/lazygit
 brew install jesseduffield/lazydocker/lazydocker
 # brew install lazydocker
 brew install starship
+brew install nvm
 
-npm install -g bower gulp nodemon
+brew install neovim
+brew install pyenv
+brew install pyenv-virtualenv
+

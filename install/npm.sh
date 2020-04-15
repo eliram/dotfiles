@@ -6,4 +6,6 @@ sudo npm install -g jslint
 sudo npm install -g jshint
 sudo npm install -g sass-lint
 sudo npm i -g eslint eslint-plugin-vue
-sudo npm install -g pug-lint
+# sudo npm install -g pug-lint
+
+npm install -g bower gulp nodemon

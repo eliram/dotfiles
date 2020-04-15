@@ -1,0 +1,28 @@
+# /Users/eliram/.config/tmuxinator/176Logs.yml
+
+name: 176Logs
+root: ~/
+
+windows:
+  - logs:
+      layout: tiled
+      panes:
+        - op:
+          - printf '\033]2;%s\033\\' 'OP'
+          - sshpass -f ~/pass ssh eliram@10.36.20.176 -i ~/.ssh/keys/Prod_apps.pem
+          - less +F /var/log/mintigo/online_platform.log
+        - manager:
+          - printf '\033]2;%s\033\\' 'Manager'
+          - sshpass -f ~/pass ssh eliram@10.36.20.176 -i ~/.ssh/keys/Prod_apps.pem
+          - less +F /var/log/mintigo/manager.log
+        - onelead:
+          - printf '\033]2;%s\033\\' 'One Lead'
+          - sshpass -f ~/pass ssh eliram@10.36.20.176 -i ~/.ssh/keys/Prod_apps.pem
+          - less +F /var/log/mintigo/oneleadhouselist.log
+        - analytics_service:
+          - printf '\033]2;%s\033\\' 'analytics_service'
+          - sshpass -f ~/pass ssh eliram@10.36.20.176 -i ~/.ssh/keys/Prod_apps.pem
+          - less +F /var/log/mintigo/analytics_service.log
+  - TraceTail:
+    - sshpass -f ~/pass ssh eliram@10.36.20.176 -i ~/.ssh/keys/Prod_apps.pem
+    - tail -f /var/log/mintigo/*.log |grep Trace

@@ -3,7 +3,7 @@
     name = Eliram Shatz
     email = eliram@mintigo.com
 [github]
-    user = eliram
+    user = eshat
 [init]
     templatedir = ~/.dotfiles/git/templates
 [alias]
