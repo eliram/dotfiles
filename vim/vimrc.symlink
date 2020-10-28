@@ -7,8 +7,8 @@ source ~/.vim/plugins.vim
 
 
 " this is for nvim in order to have only one python used for loading the pynvim
-let g:python3_host_prog = '/Users/eliram/.pyenv/versions/3.7.4/bin/python'
-let g:python_host_prog  = '/Users/eliram/.pyenv/versions/2.7.10/bin/python'
+let g:python3_host_prog = '~/.pyenv/versions/3.8.2/bin/python'
+let g:python_host_prog  = '~/.pyenv/versions/2.7.17/bin/python'
 
 " don't show buffers in the command line
 let g:bufferline_echo = 0
@@ -121,6 +121,8 @@ set smartindent
 " autocmd FileType javascript set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 autocmd FileType javascript set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 autocmd FileType vue set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
+autocmd FileType python set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+autocmd FileType yaml set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 
 
@@ -238,7 +240,7 @@ nnoremap <c-l> <c-w>l
 " NERDTree
 map <silent> <leader>nn :NERDTreeToggle<CR>
 map <silent> <leader>nt :NERDTreeFind<CR>
-let NERDTreeIgnore=['\.pyc$', '\.o$', '\.class$']
+let NERDTreeIgnore=['\.pyc$', '\.o$', '\.class$', '__pycache__', 'cov', '.mypy_cache', '.pytest_cache', '.nox']
 let NERDTreeMinimalUI=1
 
 " CtrlP
@@ -278,9 +280,9 @@ nnoremap <silent> ,t :FzfGFiles<CR>
 nnoremap <silent> ,T :FzfFiles<CR>
 nnoremap <silent> ,B :FzfBuffer<CR>
 nnoremap <silent> ,m :FzfHistory<CR>
-nnoremap <silent> ,T :FzfTags<CR>
+nnoremap <silent> ,tt :FzfTags<CR>
 nnoremap <silent> ,L :FzfLines<CR>
-nnoremap <silent> ,a :FzfAg<CR>
+nnoremap <silent> ,aa :FzfAg<CR>
 
 " Using floating windows of Neovim to start fzf
 if has('nvim')
@@ -436,7 +438,7 @@ map <silent> <S-E> <Plug>CamelCaseMotion_e
 
 
 " Dash
-" :nmap <silent> <leader>s <Plug>DashSearch
+:nmap <silent> <leader>s <Plug>DashSearch
 " :nmap <silent> <leader>s <Plug>DashGlobalSearch
 " let g:dash_map = {
 "     \ 'python' : ['pandas', 'Python 2', 'Redis', 'NumPy']

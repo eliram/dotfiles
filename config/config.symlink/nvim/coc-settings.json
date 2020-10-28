@@ -7,13 +7,17 @@
     "python.linting.pep8Args": ["--ignore=E501"],
     "python.linting.enabled": true,
     "python.linting.pydocstyleEnabled": true,
-    "python.linting.mypyEnabled": true,
-    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": false,
+    "python.linting.flake8Enabled": false,
     "python.linting.pylintEnabled": false,
     "python.linting.pep8Enabled": false,
     "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["--line-length=120"],
+    "python.jediEnabled": false,
 
     // tsserver
     "typescript.showUnused": false,
-    "javascript.showUnused": false
+    "javascript.showUnused": false,
+
+    "markdownlint.config": {"line_length": false, "MD024":false}
 }

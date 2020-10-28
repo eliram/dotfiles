@@ -21,3 +21,9 @@ tscommand*.txt
 
 #ignore all the folders under bundle
 **/bundle/
+.mypy_cache
+.python-version
+.vim
+tags
+__pycache__
+.nox

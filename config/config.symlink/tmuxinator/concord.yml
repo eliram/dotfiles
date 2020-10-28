@@ -12,11 +12,11 @@ windows:
           - rabbitmq-server &
           - printf '\033]2;%s\033\\' 'Job Manager' 
           - cd concord-job-manager 
-          - python3 -m concordjm.concord_job_manager
+          # - python3 -m concordjm.concord_job_manager
         - managerApis:
           - printf '\033]2;%s\033\\' 'Job Manager API'
           - cd concord-job-manager
-          - python3 -m concordjm.concord_job_manager_api
+          # - python3 -m concordjm.concord_job_manager_api
         - IOWorker:
           - printf '\033]2;%s\033\\' 'IOWorker'
           - cd concord-io-workers
@@ -24,7 +24,7 @@ windows:
         - API:
           - printf '\033]2;%s\033\\' 'API'
           - cd concord-api
-          - python3 -m concordapi.concord_api
+          # - python3 -m concordapi.concord_api
   - job-manager:
       root: ~/code/anaplan/concord/concord-job-manager
       layout: main-vertical

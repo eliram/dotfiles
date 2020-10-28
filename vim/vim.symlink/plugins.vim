@@ -14,6 +14,12 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+" auto-install vim-plug                                                                                                                
+if empty(glob('~/.config/nvim/autoload/plug.vim'))                                                                                    
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs 
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim                                                             
+  autocmd VimEnter * PlugInstall                                                                                                      
+endif
 
 call plug#begin('~/.vim/plugged')
 
@@ -80,7 +86,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
-" Plug 'rizzatti/dash.vim'
+Plug 'rizzatti/dash.vim'
 " Plug 'julienr/vim-cellmode'
 " JS
 Plug 'ternjs/tern_for_vim'
@@ -115,6 +121,9 @@ Plug 'posva/vim-vue'
 Plug 'dNitro/vim-pug-complete'
 Plug 'digitaltoad/vim-pug'
 Plug 'othree/html5.vim'
+
+" Toml
+Plug 'cespare/vim-toml'
 
 
 " call vundle#end()            " required

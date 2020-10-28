@@ -45,7 +45,7 @@ compinit -C
 
 # for config ($ZSH/**/*completion.sh) source $config
 
-export EDITOR='vim'
+export EDITOR='nvim'
 
 export PATH=/usr/local/bin:$PATH
 
