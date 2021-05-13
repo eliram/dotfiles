@@ -49,6 +49,7 @@ export EDITOR='nvim'
 
 export PATH=/usr/local/bin:$PATH
 
+
 # add /usr/local/sbin
 if [[ -d /usr/local/sbin ]]; then
     export PATH=/usr/local/sbin:$PATH
@@ -120,3 +121,14 @@ date "+%s.%N"
 # profiling
 # zprof # bottom of .zshrc
 export DISABLE_AUTO_TITLE=true 
+
+
+# define the planning ai mono repo code directory
+export PAI_MONO_REPO_CODE_DIR=~/code/anaplan/planning-ai-mono
+# load all the planning ai mono repo specific environment configuration.
+if [ -e $PAI_MONO_REPO_CODE_DIR/.pairc ]; then
+    source $PAI_MONO_REPO_CODE_DIR/.pairc
+fi
+export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
+export PATH="/usr/local/opt/openjdk@8/libexec/openjdk.jdk/Contents/Home/bin:$PATH"
+export PATH="/Users/eliramshatz/code/anaplan/build-tools/jenkins_pipeline/src:$PATH"

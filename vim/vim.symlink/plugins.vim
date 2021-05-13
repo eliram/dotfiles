@@ -125,6 +125,11 @@ Plug 'othree/html5.vim'
 " Toml
 Plug 'cespare/vim-toml'
 
+" VimSpector
+Plug 'puremourning/vimspector'
+
+"WhichKey
+Plug 'liuchengxu/vim-which-key'
 
 " call vundle#end()            " required
 filetype plugin indent on    " required

@@ -5,6 +5,11 @@
 " load plugins from vundle
 source ~/.vim/plugins.vim
 
+
+" this is for nvim in order to have only one python used for loading the pynvim
+let g:python3_host_prog = '~/.pyenv/versions/3.8.2/bin/python'
+let g:python_host_prog  = '~/.pyenv/versions/2.7.17/bin/python'
+
 " don't show buffers in the command line
 let g:bufferline_echo = 0
 
@@ -116,6 +121,8 @@ set smartindent
 " autocmd FileType javascript set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 autocmd FileType javascript set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 autocmd FileType vue set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
+autocmd FileType python set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+autocmd FileType yaml set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 
 
@@ -233,7 +240,7 @@ nnoremap <c-l> <c-w>l
 " NERDTree
 map <silent> <leader>nn :NERDTreeToggle<CR>
 map <silent> <leader>nt :NERDTreeFind<CR>
-let NERDTreeIgnore=['\.pyc$', '\.o$', '\.class$']
+let NERDTreeIgnore=['\.pyc$', '\.o$', '\.class$', '__pycache__', 'cov', '.mypy_cache', '.pytest_cache', '.nox']
 let NERDTreeMinimalUI=1
 
 " CtrlP
@@ -273,10 +280,29 @@ nnoremap <silent> ,t :FzfGFiles<CR>
 nnoremap <silent> ,T :FzfFiles<CR>
 nnoremap <silent> ,B :FzfBuffer<CR>
 nnoremap <silent> ,m :FzfHistory<CR>
-nnoremap <silent> ,T :FzfTags<CR>
+nnoremap <silent> ,tt :FzfTags<CR>
 nnoremap <silent> ,L :FzfLines<CR>
-nnoremap <silent> ,a :FzfAg<CR>
+nnoremap <silent> ,aa :FzfAg<CR>
 
+" Using floating windows of Neovim to start fzf
+if has('nvim')
+let $FZF_DEFAULT_OPTS .= ' --border --margin=0,2'
+
+function! FloatingFZF()
+let width = float2nr(&columns * 0.9)
+let height = float2nr(&lines * 0.6)
+let opts = { 'relative': 'editor',
+	   \ 'row': (&lines - height) / 2,
+	   \ 'col': (&columns - width) / 2,
+	   \ 'width': width,
+	   \ 'height': height }
+
+let win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+call setwinvar(win, '&winhighlight', 'NormalFloat:Normal')
+endfunction
+
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+endif
 
 " TagBar
 let g:tagbar_autoclose = 1
@@ -321,6 +347,9 @@ nmap <silent><leader>gb :Gblame<cr>
 
 " nmap <leader>m :MarkedOpen!<cr>
 " nmap <leader>mq :MarkedQuit<cr>
+" set to 1, nvim will open the preview window after entering the markdown buffer
+" default: 0
+let g:mkdp_auto_start = 1
 
 
 
@@ -409,7 +438,7 @@ map <silent> <S-E> <Plug>CamelCaseMotion_e
 
 
 " Dash
-" :nmap <silent> <leader>s <Plug>DashSearch
+:nmap <silent> <leader>s <Plug>DashSearch
 " :nmap <silent> <leader>s <Plug>DashGlobalSearch
 " let g:dash_map = {
 "     \ 'python' : ['pandas', 'Python 2', 'Redis', 'NumPy']
@@ -465,18 +494,9 @@ set spellfile=~/.vim/spell/en.utf-8.add
 set spell
 
 " ultisnips
-" let g:UltiSnipsExpandTrigger = '<C-j>'
-" let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-" let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-" YouCompleteMe and UltiSnips compatibility, with the helper of supertab
-" (via http://stackoverflow.com/a/22253548/1626737)
-let g:SuperTabDefaultCompletionType    = '<C-n>'
-let g:SuperTabCrMapping                = 0
 let g:UltiSnipsExpandTrigger           = '<tab>'
 let g:UltiSnipsJumpForwardTrigger      = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
-" let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
-" let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
 " let g:used_javascript_libs = 'underscore,jquery,angularjs,angularuirouter,chai,vue,d3'
 
@@ -560,6 +580,26 @@ noremap <right> <C-w><right>
 
 " livedown.vim
 let g:livedown_autorun = 1
+" test on save
+let test#strategy = {
+  \ 'nearest': 'neovim',
+  \ 'file':    'dispatch',
+  \ 'suite':   'basic',
+\}
+
+" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+nmap <silent> u<C-n> :TestNearest<CR>
+nmap <silent> u<C-f> :TestFile<CR>
+nmap <silent> u<C-s> :TestSuite<CR>
+nmap <silent> u<C-l> :TestLast<CR>
+nmap <silent> u<C-g> :TestVisit<CR>
+" augroup test
+"   autocmd!
+"   autocmd BufWrite * if test#exists() |
+"     \ TestNearest -strategy=neovim |
+"     \ endif
+" augroup END
+
 " coc setup start
 
 let g:coc_global_extensions=[
@@ -570,7 +610,12 @@ let g:coc_global_extensions=[
 	\ 'coc-pairs',
 	\ 'coc-tsserver',
 	\ 'coc-eslint',
-	\ 'coc-prettier'
+	\ 'coc-prettier',
+	\ 'coc-html',
+	\ 'coc-css',
+	\ 'coc-angular',
+	\ 'coc-vetur',
+	\ 'coc-markdownlint'
 	\ ]
 autocmd FileType json syntax match Comment +\/\/.\+$+
 

@@ -1,23 +1,33 @@
 {
     "coc.preferences.formatOnSaveFiletypes": ["python"],
+    "codeLens.enable": true,
 
     // python
-    "python.autoUpdateLanguageServer": true,
+    // "python.autoUpdateLanguageServer": true,
     "python.linting.flake8Args": ["--max-line-length=120", "--ignore=E24,W504,E501", "--verbose"],
-    "python.linting.pep8Args": ["--ignore=E501"],
+    // "python.linting.pep8Args": ["--ignore=E501"],
     "python.linting.enabled": true,
     "python.linting.pydocstyleEnabled": true,
     "python.linting.mypyEnabled": false,
     "python.linting.flake8Enabled": false,
     "python.linting.pylintEnabled": false,
-    "python.linting.pep8Enabled": false,
+    // "python.linting.pep8Enabled": false,
+    "python.linting.lintOnSave": true,
     "python.formatting.provider": "black",
     "python.formatting.blackArgs": ["--line-length=120"],
-    "python.jediEnabled": false,
+    //"python.jediEnabled": false,
 
     // tsserver
     "typescript.showUnused": false,
     "javascript.showUnused": false,
 
-    "markdownlint.config": {"line_length": false, "MD024":false}
+    "markdownlint.config": {"line_length": false, "MD024":false},
+
+    "yaml.customTags": ["? !!python/tuple tuple"],
+
+    "groovy.java.home": "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home",
+    "groovy.project.referencedLibraries": ["/Users/eliramshatz/.gradle/caches/modules-2/files-2.1/**", "/Users/eliramshatz/code/anaplan/build-tools/jenkins_pipeline/src/**"],
+    "groovy.trace.server": "verbose",
+    "groovy.ls.vmargs": "-Djava.library.path=/Users/eliramshatz/code/anaplan/build-tools/jenkins_pipeline/src"
+
 }

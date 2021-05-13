@@ -4,6 +4,8 @@
 
 " load plugins from vundle
 source ~/.vim/plugins.vim
+source ~/.vim/functions.vim
+source ~/.config/nvim/vimspector.vim
 
 
 " this is for nvim in order to have only one python used for loading the pynvim
@@ -110,8 +112,8 @@ set relativenumber " show relative line numbers
 set number " show the current line number"
 set cursorline
 
-set wrap "turn on line wrapping
-set wrapmargin=8 " wrap lines when coming within n characters from side
+" set wrap "turn on line wrapping
+" set wrapmargin=8 " wrap lines when coming within n characters from side
 set linebreak " set soft wrapping
 set showbreak=… " show ellipsis at breaking
 
@@ -123,7 +125,6 @@ autocmd FileType javascript set tabstop=4 softtabstop=0 expandtab shiftwidth=2 s
 autocmd FileType vue set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 autocmd FileType python set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 autocmd FileType yaml set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -161,6 +162,10 @@ map <leader>evp :e! ~/.vim/plugins.vim<cr>
 map <leader>evf :e! ~/.vim/functions.vim<cr>
 " edit gitconfig
 map <leader>eg :e! ~/.gitconfig<cr>
+
+map <leader>gp :!SKIP=tests git push<cr>
+map <leader>gpf :!SKIP=tests git push -f<cr>
+map <leader>grd :Grebase -i origin/develop<cr>
 
 set showbreak=↪
 
@@ -205,6 +210,8 @@ nnoremap <silent> ss <C-w>s
 
 "close buffer but not window
 map <silent> <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
+"close all buffers but the current
+map <silent> <leader>o :%bd\|e#<cr>
 
 
 " vim - search
@@ -602,8 +609,9 @@ nmap <silent> u<C-g> :TestVisit<CR>
 
 " coc setup start
 
+	" \ 'coc-python', 
 let g:coc_global_extensions=[
-	\ 'coc-python', 
+        \ 'coc-pyright',
   	\ 'coc-json',
 	\ 'coc-yaml',
 	\ 'coc-snippets',
@@ -749,3 +757,88 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " coc setup end
 call ApplyLocalSettings(expand('.'))
+
+"Vimspector
+let g:vimspector_enable_mapping = 'HUMAN'
+" nmap <leader>dx :call VimspectorReset<CR>
+" nmap <leader>de :call VimspectorEval
+" nmap <leader>dw :call VimspectorWatch
+" nmap <leader>do :call VimspectorShowOutput
+map <Leader><Leader>vs :call vimspector#Launch()<CR>
+map <Leader><Leader>c <Plug>VimspectorContinue
+map <Leader><Leader>n <Plug>VimspectorStepOver
+map <Leader><Leader>s <Plug>vimspectorStepInto
+map <Leader><Leader>u <Plug>vimspectorStepOut
+map <leader><leader>b <Plug>VimspectorToggleBreakpoint
+map <leader><leader>t <Plug>VimspectorRunToCursor
+
+
+
+
+" Map leader to which_key
+nnoremap <silent> <leader> :silent WhichKey ','<CR>
+vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+
+" Create map to add keys to
+let g:which_key_map =  {}
+" Define a separator
+let g:which_key_sep = '→'
+" set timeoutlen=100
+
+
+" Not a fan of floating windows for this
+let g:which_key_use_floating_win = 0
+
+" Change the colors if you want
+highlight default link WhichKey          Operator
+highlight default link WhichKeySeperator DiffAdded
+highlight default link WhichKeyGroup     Identifier
+highlight default link WhichKeyDesc      Function
+
+" Hide status line
+autocmd! FileType which_key
+autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+
+" Single mappings
+let g:which_key_map['/'] = [ '<Plug>NERDCommenterToggle'  , 'comment' ]
+let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
+let g:which_key_map['f'] = [ ':Files'                     , 'search files' ]
+let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
+let g:which_key_map['r'] = [ ':Ranger'                    , 'ranger' ]
+let g:which_key_map['S'] = [ ':Startify'                  , 'start screen' ]
+let g:which_key_map['T'] = [ ':Rg'                        , 'search text' ]
+let g:which_key_map['v'] = [ '<C-W>v'                     , 'split right']
+let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
+
+" s is for search
+let g:which_key_map.s = {
+      \ 'name' : '+search' ,
+      \ '/' : [':History/'     , 'history'],
+      \ ';' : [':Commands'     , 'commands'],
+      \ 'a' : [':Ag'           , 'text Ag'],
+      \ 'b' : [':BLines'       , 'current buffer'],
+      \ 'B' : [':Buffers'      , 'open buffers'],
+      \ 'c' : [':Commits'      , 'commits'],
+      \ 'C' : [':BCommits'     , 'buffer commits'],
+      \ 'f' : [':Files'        , 'files'],
+      \ 'g' : [':GFiles'       , 'git files'],
+      \ 'G' : [':GFiles?'      , 'modified git files'],
+      \ 'h' : [':History'      , 'file history'],
+      \ 'H' : [':History:'     , 'command history'],
+      \ 'l' : [':Lines'        , 'lines'] ,
+      \ 'm' : [':Marks'        , 'marks'] ,
+      \ 'M' : [':Maps'         , 'normal maps'] ,
+      \ 'p' : [':Helptags'     , 'help tags'] ,
+      \ 'P' : [':Tags'         , 'project tags'],
+      \ 's' : [':Snippets'     , 'snippets'],
+      \ 'S' : [':Colors'       , 'color schemes'],
+      \ 't' : [':Rg'           , 'text Rg'],
+      \ 'T' : [':BTags'        , 'buffer tags'],
+      \ 'w' : [':Windows'      , 'search windows'],
+      \ 'y' : [':Filetypes'    , 'file types'],
+      \ 'z' : [':FZF'          , 'FZF'],
+      \ }
+
+" Register which key map
+call which_key#register(',,', "g:which_key_map")
