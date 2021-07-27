@@ -25,8 +25,8 @@
 
     "yaml.customTags": ["? !!python/tuple tuple"],
 
+    // groovy
     "groovy.java.home": "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home",
-    "groovy.project.referencedLibraries": ["/Users/eliramshatz/.gradle/caches/modules-2/files-2.1/**", "/Users/eliramshatz/code/anaplan/build-tools/jenkins_pipeline/src/**"],
     "groovy.trace.server": "verbose",
     "groovy.ls.vmargs": "-Djava.library.path=/Users/eliramshatz/code/anaplan/build-tools/jenkins_pipeline/src"
 

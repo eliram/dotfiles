@@ -35,4 +35,4 @@ brew install nvm
 brew install neovim
 brew install pyenv
 brew install pyenv-virtualenv
-
+brew install k9s

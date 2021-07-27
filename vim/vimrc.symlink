@@ -163,6 +163,9 @@ map <leader>evf :e! ~/.vim/functions.vim<cr>
 " edit gitconfig
 map <leader>eg :e! ~/.gitconfig<cr>
 
+" edit zshrc
+map <leader>ez :e! ~/.zshrc<cr>
+
 map <leader>gp :!SKIP=tests git push<cr>
 map <leader>gpf :!SKIP=tests git push -f<cr>
 map <leader>grd :Grebase -i origin/develop<cr>
@@ -623,7 +626,10 @@ let g:coc_global_extensions=[
 	\ 'coc-css',
 	\ 'coc-angular',
 	\ 'coc-vetur',
-	\ 'coc-markdownlint'
+	\ 'coc-markdownlint',
+	\ 'coc-groovy',
+	\ 'coc-toml',
+	\ 'coc-vimlsp'
 	\ ]
 autocmd FileType json syntax match Comment +\/\/.\+$+
 

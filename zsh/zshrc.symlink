@@ -132,3 +132,4 @@ fi
 export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
 export PATH="/usr/local/opt/openjdk@8/libexec/openjdk.jdk/Contents/Home/bin:$PATH"
 export PATH="/Users/eliramshatz/code/anaplan/build-tools/jenkins_pipeline/src:$PATH"
+export GROOVY_HOME=/usr/local/opt/groovy/libexec
