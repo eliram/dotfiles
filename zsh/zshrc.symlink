@@ -1,11 +1,15 @@
 # this is profiling need to uncomment here and in the end
 # zmodload zsh/zprof # top of your .zshrc file
 date "+%s.%N"
+autoload -U +X compinit && compinit
 
 export DOTFILES=$HOME/.dotfiles
 export ZSH=$DOTFILES/zsh
 
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
+# ZSH_THEME="cobalt2"
+# ZSH_THEME="gozilla"
+
 
 # Source Prezto.
 # ZDOTDIR=$DOTFILES/zsh
@@ -45,7 +49,7 @@ compinit -C
 
 # for config ($ZSH/**/*completion.sh) source $config
 
-export EDITOR='nvim'
+export EDITOR='lvim'
 
 export PATH=/usr/local/bin:$PATH
 
@@ -100,23 +104,16 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
+  eval "$(pyenv init --path)"
   eval "$(pyenv virtualenv-init -)"
 fi
-
-
-# enable nox support
-# To activate completions for zsh you need to have
-# bashcompinit enabled in zsh:
-autoload -U bashcompinit
-bashcompinit
-
-# # Afterwards you can enable completion for nox:
-eval "$(register-python-argcomplete nox)"
 
 # Enable startship
 eval "$(starship init zsh)"
 
+# Enable kubectl autocomplete
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
 date "+%s.%N"
 # profiling
 # zprof # bottom of .zshrc
@@ -133,3 +130,17 @@ export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
 export PATH="/usr/local/opt/openjdk@8/libexec/openjdk.jdk/Contents/Home/bin:$PATH"
 export PATH="/Users/eliramshatz/code/anaplan/build-tools/jenkins_pipeline/src:$PATH"
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
+
+#add support for direnv
+eval "$(direnv hook zsh)"
+
+# #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# export SDKMAN_DIR="$HOME/.sdkman"
+# [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# pnpm
+export PNPM_HOME="/Users/eliramshatz/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+. /usr/local/opt/asdf/libexec/asdf.sh

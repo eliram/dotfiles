@@ -21,6 +21,11 @@
     gs = stash
     gsp = stash pop
     # br = branch -v
+    # Now you can use git ignore my_file to ignore changes to the local file, and git unignore my_file to stop ignoring the changes. git ignored lists the ignored files.
+    # https://gitready.com/intermediate/2009/02/18/temporarily-ignoring-files.html
+    ignore = update-index --assume-unchanged
+    unignore = update-index --no-assume-unchanged
+    ignored = !git ls-files -v | grep "^[[:lower:]]"
 
     # l = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
     # # show a pretty log graph
@@ -120,7 +125,7 @@
 [core]
     excludesfile = ~/.gitignore_global
     pager = less -FXRS -x2
-    editor = nvim
+    editor = vi
 [rerere]
     enabled = true
 # [gitsh]
@@ -137,3 +142,12 @@
 # 	trustexitcode = true
 [credential]
 	helper = cache --timeout=360000
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[hub]
+	host = github.anaplan.com
+[pull]
+	rebase = true

@@ -27,3 +27,6 @@ tscommand*.txt
 tags
 __pycache__
 .nox
+.vimspector*
+.envrc
+.pyright*
