@@ -1,0 +1,5 @@
+export XDG_CONFIG_HOME="$HOME/.config"
+export DOTFILES=$HOME/.dotfiles
+export ZDOTDIR=$DOTFILES/zsh
+
+. "$HOME/.cargo/env"

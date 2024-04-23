@@ -1,4 +1,4 @@
-#files: 997	version: 5.9
+#files: 987	version: 5.9
 
 _comps=(
 '-' '_precommand'
@@ -234,7 +234,6 @@ _comps=(
 'bzip2' '_bzip2'
 'bzip2recover' '_bzip2'
 'bzr' '_bzr'
-'c' '_c'
 'c++' '_gcc'
 'cabal' '_cabal'
 'caffeinate' '_caffeinate'
@@ -731,7 +730,6 @@ _comps=(
 'gzgrep' '_grep'
 'gzilla' '_webbrowser'
 'gzip' '_gzip'
-'h' '_h'
 'hash' '_hash'
 'hd' '_hexdump'
 'hdiutil' '_hdiutil'
@@ -833,7 +831,6 @@ _comps=(
 'ksh88' '_sh'
 'ksh93' '_sh'
 'ktrace' '_ktrace'
-'kubectl' '_kubectl'
 'kvno' '_kvno'
 'last' '_last'
 'lastb' '_last'
@@ -1859,9 +1856,7 @@ bindkey '^[,' _history-complete-newer
 bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
-autoload -Uz _c _h _c _h _c \
-            _h _c _h _c _h \
-            _asdf _aws _brew _code-minimap _ctlptl \
+autoload -Uz _asdf _aws _brew _code-minimap _ctlptl \
             _docker _fnm _git _gradle _helm \
             _hub _k9s _kind _ninja _rg \
             _skaffold _starship _step _the_silver_searcher _tilt \

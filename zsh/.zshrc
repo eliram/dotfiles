@@ -1,24 +1,13 @@
 # this is profiling need to uncomment here and in the end
 # zmodload zsh/zprof # top of your .zshrc file
 date "+%s.%N"
-autoload -U +X compinit && compinit
 
-export DOTFILES=$HOME/.dotfiles
+# export DOTFILES=$HOME/.dotfiles
 export ZSH=$DOTFILES/zsh
 
 # ZSH_THEME="agnoster"
 # ZSH_THEME="cobalt2"
 # ZSH_THEME="gozilla"
-
-
-# Source Prezto.
-# ZDOTDIR=$DOTFILES/zsh
-# if [[ -s "$ZSH/.zprezto/init.zsh" ]]; then
-#   source "$ZSH/.zprezto/init.zsh"
-#   autoload -Uz promptinit
-#   promptinit
-#   prompt steeef
-# fi
 
 # define the code directory
 if [[ -d ~/code ]]; then
@@ -38,19 +27,19 @@ fi
 
 
 # initialize autocomplete - do this only once a day (speed up)
+# autoload -U +X compinit && compinit
 autoload -Uz compinit
 for dump in ~/.zcompdump(N.mh+24); do
   compinit
 done
 compinit -C
 
-# autoload -U compinit
-# compinit
-
 # for config ($ZSH/**/*completion.sh) source $config
 
 export EDITOR='lvim'
 
+
+#path
 export PATH=/usr/local/bin:$PATH
 
 
@@ -69,17 +58,13 @@ fi
 
 [ -z "$TMUX" ] && export TERM=xterm-256color
 
-# # source nvm
-# export NVM_DIR=~/.nvm
-# source $(brew --prefix nvm)/nvm.sh
-
 # . ~/z/z.sh
 if command -v brew >/dev/null 2>&1; then
 	# Load rupa's z if installed
 	[ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
 fi
 
-# Base16 Shell
+# Base16 Shel# Base16 Shell
 export THEME="base16-3024"
 if [ -z "$THEME" ]; then
     export THEME="base16-3024"
@@ -89,7 +74,7 @@ if [ -z "$BACKGROUND" ]; then
     export BACKGROUND="dark"
 fi
 
-BASE16_SHELL="$DOTFILES/.config/base16-shell/$THEME.$BACKGROUND.sh"
+BASE16_SHELL="$DOTFILES/.config/base16-shell/scripts/$THEME.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 source $BASE16_SHELL
 
@@ -114,9 +99,6 @@ eval "$(starship init zsh)"
 # Enable kubectl autocomplete
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
-date "+%s.%N"
-# profiling
-# zprof # bottom of .zshrc
 export DISABLE_AUTO_TITLE=true 
 
 
@@ -143,4 +125,12 @@ export PNPM_HOME="/Users/eliramshatz/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
+
+# zsh-autosuggestions
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
 . /usr/local/opt/asdf/libexec/asdf.sh
+date "+%s.%N"
+# profiling
+# zprof # bottom of .zshrc
