@@ -22,7 +22,6 @@ brew install ctags-exuberant
 brew install cmake
 brew install jesseduffield/lazygit/lazygit
 brew install jesseduffield/lazydocker/lazydocker
-brew install starship
 # brew install nvm
 
 brew install neovim
@@ -32,4 +31,6 @@ brew install k9s
 # asdf dependencies and installation
 brew install coreutils curl git
 brew install asdf
+brew install direnv
 
+brew install starship
