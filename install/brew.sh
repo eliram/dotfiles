@@ -33,4 +33,6 @@ brew install coreutils curl git
 brew install asdf
 brew install direnv
 
+brew install cargo-c
+
 brew install starship
