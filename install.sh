@@ -37,6 +37,9 @@ else
     source install/ubuntu.sh
 fi
 
+# install lunarvim
+source install/lunarvim.sh
+
 
 echo "configuring zsh as default shell"
 sudo chsh -s $(which zsh)
