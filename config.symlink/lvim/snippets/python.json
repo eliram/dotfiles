@@ -1,0 +1,6 @@
+{
+    "pudb": {
+        "prefix": "ipudb",
+        "body": "__import__('pudb').set_trace()"
+    }
+}
