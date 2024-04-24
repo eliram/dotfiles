@@ -18,7 +18,7 @@ brew install zsh-autosuggestions
 brew install z
 brew install htop
 brew install ctags-exuberant
-brew install node
+# brew install node
 brew install cmake
 brew install jesseduffield/lazygit/lazygit
 brew install jesseduffield/lazydocker/lazydocker
