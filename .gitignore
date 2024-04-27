@@ -19,4 +19,5 @@ tmux/tmux.symlink/plugins/tmux-continuum/
 tmux/tmux.symlink/plugins/tmux-resurrect/
 pyenv/pyenv.symlink/pyenv.symlink
 config.symlink/htop
+lazygit/state.yml
 zsh/.zsh_history
