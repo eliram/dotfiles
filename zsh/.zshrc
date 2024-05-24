@@ -2,6 +2,9 @@
 # zmodload zsh/zprof # top of your .zshrc file
 date "+%s.%N"
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+
 # export DOTFILES=$HOME/.dotfiles
 export ZSH=$DOTFILES/zsh
 
@@ -27,6 +30,8 @@ fi
 
 
 # initialize autocomplete - do this only once a day (speed up)
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
 # autoload -U +X compinit && compinit
 autoload -Uz compinit
 for dump in ~/.zcompdump(N.mh+24); do
@@ -129,8 +134,11 @@ export PATH="$PNPM_HOME:$PATH"
 # zsh-autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# Enable asdf autocomplete
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
-. /usr/local/opt/asdf/libexec/asdf.sh
+# . /usr/local/opt/asdf/libexec/asdf.sh
 date "+%s.%N"
 # profiling
 # zprof # bottom of .zshrc
+

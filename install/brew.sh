@@ -12,8 +12,8 @@ brew install ag
 # brew install redis
 
 # development tools
-brew install git
-brew install zsh
+# brew install git
+# brew install zsh
 brew install zsh-autosuggestions
 brew install z
 brew install htop

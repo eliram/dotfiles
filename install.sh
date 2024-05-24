@@ -20,7 +20,10 @@ if [ "$(uname)" == "Darwin" ]; then
     echo "running on OSX"
 
     echo "installing homebrew"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    # (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/eliramshatz/.zprofile
+    # eval "$(/opt/homebrew/bin/brew shellenv)"
+    # ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
     echo "brewing all the things"
     source install/brew.sh

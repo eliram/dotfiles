@@ -1,4 +1,42 @@
+format = """
+[░▒▓](#a3aed2)\
+[  ](bg:#a3aed2 fg:#090c0c)\
+[](bg:directory_color_bg fg:#a3aed2)\
+$directory\
+$git_branch\
+$git_status\
+$kubernetes\
+$nodejs\
+$python\
+$java\
+$gradle\
+[](fg:#1d2230)\
+\n$time\
+$battery\
+$character"""
+
 command_timeout = 10000
+
+
+# Set 'foo' as custom color palette
+palette = 'eliram'
+
+# Define custom colors
+[palettes.eliram]
+directory_color_fg = '#e3e5e5'
+directory_color_bg = '#769ff0'
+git_color_fg = '#769ff0'
+git_color_bg = '#394260'
+
+langs_coloer_fg = '#769ff0'
+langs_coloer_bg = '#212736'
+
+# Overwrite existing color
+blue = '21'
+# Define new color
+mustard = '#af8700'
+
+
 [battery]
 full_symbol = "🔋 "
 charging_symbol = "⚡️ "
@@ -14,28 +52,9 @@ disabled = false
 [kubernetes.context_aliases]
 "arn:aws:eks:us-east-1:189840129916:cluster/np-eks" = "non-prod"
 
-
-format = """
-[░▒▓](#a3aed2)\
-[  ](bg:#a3aed2 fg:#090c0c)\
-[](bg:#769ff0 fg:#a3aed2)\
-$directory\
-[](fg:#769ff0 bg:#394260)\
-$git_branch\
-$git_status\
-[](fg:#394260 bg:#212736)\
-$nodejs\
-$rust\
-$golang\
-$php\
-[](fg:#212736 bg:#1d2230)\
-$time\
-[ ](fg:#1d2230)\
-\n$character"""
-
 [directory]
-style = "fg:#e3e5e5 bg:#769ff0"
-format = "[ $path ]($style)"
+style = "fg:directory_color_fg bg:directory_color_bg"
+format = "[ $path ]($style)[](fg:directory_color_bg bg:git_color_bg)"
 truncation_length = 3
 truncation_symbol = "…/"
 
@@ -47,17 +66,29 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:#394260"
-format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+style = "fg:git_color_fg bg:git_color_bg"
+format = '[[ $symbol $branch ]($style)]($style)'
 
 [git_status]
-style = "bg:#394260"
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+style = "fg:git_color_fg bg:git_color_bg"
+format = '[[($all_status$ahead_behind )]($style)]($style)[](fg:git_color_bg bg:#212736)'
 
 [nodejs]
 symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+style = "fg:langs_coloer_fg bg:langs_coloer_bg"
+format = '[[ $symbol ($version) ]($style)]($style)[](fg:#212736 bg:#212736)'
+
+[python]
+style = "fg:langs_coloer_fg bg:langs_coloer_bg"
+format = '[[ $symbol ($version) ( pyenv:$virtualenv) ]($style)]($style)[](fg:#212736 bg:#212736)'
+
+[java]
+style = "fg:langs_coloer_fg bg:langs_coloer_bg"
+format = '[[ $symbol ($version) ]($style)]($style)[](fg:#212736 bg:#212736)'
+
+[gradle]
+style = "fg:langs_coloer_fg bg:langs_coloer_bg"
+format = '[[ $symbol ($version) ]($style)]($style)[](fg:#212736 bg:#212736)'
 
 [rust]
 symbol = ""
@@ -78,5 +109,7 @@ format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#1d2230"
-format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)[](fg:#1d2230)'
 
+[direnv]
+disabled = false
