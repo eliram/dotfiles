@@ -1,4 +1,5 @@
 pyenv/pyenv.symlink/versions/
+pyenv/pyenv.symlink/version
 pyenv/pyenv.symlink/shims/
 pyenv/pyenv.symlink/plugins/
 config/config.symlink/nvim/autoload/
@@ -27,3 +28,4 @@ config.symlink/lvim/lazy-lock.json
 
 zsh/.zsh_history
 zsh/.zcompdump
+zsh/.zcompcache
