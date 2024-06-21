@@ -1,9 +1,9 @@
 # gitconfig
 [user]
     name = Eliram Shatz
-    email = eliram.shatz@anaplan.com
+    email = shatz@rapidai.com
 [github]
-    user = eshat
+    user = shat
 [init]
     templatedir = ~/.dotfiles/git/templates
 [alias]

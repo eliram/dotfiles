@@ -20,6 +20,7 @@ tmux/tmux.symlink/plugins/tmux-resurrect/
 pyenv/pyenv.symlink/pyenv.symlink
 
 config.symlink/htop
+config.symlink/github-copilot
 
 lazygit/state.yml
 config.symlink/lvim/lazy-lock.json
