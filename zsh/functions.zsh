@@ -144,3 +144,10 @@ function light() {
 function dark() {
     export BACKGROUND="dark" && reload!
 }
+
+function awscreds() {
+    aws sts get-caller-identity --profile $1 || aws sso login --profile $1
+    FILE=~/.aws/cli/cache/$(ls -t ~/.aws/cli/cache | head -n 1)
+    export AWS_ACCESS_KEY_ID="$(jq -r '.Credentials.AccessKeyId' $FILE)" AWS_SECRET_ACCESS_KEY="$(jq -r '.Credentials.SecretAccessKey' $FILE)" AWS_SESSION_TOKEN="$(jq -r '.Credentials.SessionToken' $FILE)"
+    export AWS_PROFILE="$1"
+}

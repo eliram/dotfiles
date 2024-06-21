@@ -17,6 +17,9 @@ if [[ -d ~/code ]]; then
     export CODE_DIR=~/code
 fi
 
+# Enable asdf autocomplete
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
 # load all zsh config files
 for config ($ZSH/**/*.zsh) source $config
 
@@ -33,11 +36,13 @@ fi
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 # autoload -U +X compinit && compinit
+autoload bashcompinit && bashcompinit
 autoload -Uz compinit
 for dump in ~/.zcompdump(N.mh+24); do
   compinit
 done
 compinit -C
+complete -C '/Users/eliramshatz/.asdf/shims/aws_completer' aws
 
 # for config ($ZSH/**/*completion.sh) source $config
 
@@ -83,12 +88,13 @@ BASE16_SHELL="$DOTFILES/.config/base16-shell/scripts/$THEME.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 source $BASE16_SHELL
 
+
+
 export VIRTUAL_ENV_DISABLE_PROMPT=True
 
 export WORKON_HOME=~/virtualenv
 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -108,11 +114,11 @@ export DISABLE_AUTO_TITLE=true
 
 
 # define the planning ai mono repo code directory
-export PAI_MONO_REPO_CODE_DIR=~/code/anaplan/planning-ai-mono
+# export PAI_MONO_REPO_CODE_DIR=~/code/anaplan/planning-ai-mono
 # load all the planning ai mono repo specific environment configuration.
-if [ -e $PAI_MONO_REPO_CODE_DIR/.pairc ]; then
-    source $PAI_MONO_REPO_CODE_DIR/.pairc
-fi
+# if [ -e $PAI_MONO_REPO_CODE_DIR/.pairc ]; then
+#     source $PAI_MONO_REPO_CODE_DIR/.pairc
+# fi
 export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
 export PATH="/usr/local/opt/openjdk@8/libexec/openjdk.jdk/Contents/Home/bin:$PATH"
 export PATH="/Users/eliramshatz/code/anaplan/build-tools/jenkins_pipeline/src:$PATH"
@@ -126,18 +132,16 @@ eval "$(direnv hook zsh)"
 # [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # pnpm
-export PNPM_HOME="/Users/eliramshatz/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+# export PNPM_HOME="/Users/eliramshatz/Library/pnpm"
+# export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
 
 # zsh-autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Enable asdf autocomplete
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
-# . /usr/local/opt/asdf/libexec/asdf.sh
+
 date "+%s.%N"
 # profiling
 # zprof # bottom of .zshrc
